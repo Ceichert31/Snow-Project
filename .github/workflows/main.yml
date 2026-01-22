@@ -28,7 +28,7 @@ jobs:
           targetPlatform: Android
           # Call custom script in Unity Editor
           buildMethod: AutomatedBuild.BuildAndroid
-          unityVersion: auto
+          unityVersion: 6000.0.66f1
           versioning: Semantic
           androidAppBundle: false
 
