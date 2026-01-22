@@ -1,30 +1,40 @@
 using UnityEditor;
-using System.IO;
+using UnityEditor.Build.Reporting;
+using UnityEngine;
 
 public class AutomatedBuild
 {
-    /// <summary>
-    /// Builds the android APK
-    /// </summary>
-    /// <remarks>
-    /// Called by GitHub action runner
-    /// </remarks>
     public static void BuildAndroid()
     {
-        //Add all scenes we want to build
-        string[] scenes = { "Assets/Scenes/SampleScene.unity" };
+        Debug.Log("BUILD STARTED");
 
-        string outputPath = "builds/Android/build.apk"; 
+        string[] scenes = new string[]
+        {
+            "Assets/Scenes/SampleScene.unity"
+        };
 
-        // Ensure output directory exists
-        Directory.CreateDirectory("builds");
+        string buildPath = "builds/Android/build.apk";
 
-        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-        buildPlayerOptions.scenes = scenes;
-        buildPlayerOptions.locationPathName = outputPath;
-        buildPlayerOptions.target = BuildTarget.Android;
-        buildPlayerOptions.options = BuildOptions.None;
+        Debug.Log($"Building to: {buildPath}");
 
-        BuildPipeline.BuildPlayer(buildPlayerOptions);
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
+        {
+            scenes = scenes,
+            locationPathName = buildPath,
+            target = BuildTarget.Android,
+            options = BuildOptions.None
+        };
+
+        BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+
+        if (report.summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded)
+        {
+            Debug.Log($"BUILD SUCCEEDED | Size: {report.summary.totalSize} bytes");
+        }
+        else
+        {
+            Debug.LogError("BUILD FAILED");
+            EditorApplication.Exit(1);
+        }
     }
 }
