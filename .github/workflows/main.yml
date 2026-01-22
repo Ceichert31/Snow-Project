@@ -29,6 +29,7 @@ jobs:
           # Call custom script in Unity Editor
           buildMethod: AutomatedBuild.BuildAndroid
           unityVersion: 6000.0.66f1
+          customImage: 'unityci/editor:ubuntu-6000.0.66f1-android-3'
           versioning: Semantic
           androidAppBundle: false
 
