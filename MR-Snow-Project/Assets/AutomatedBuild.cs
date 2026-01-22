@@ -14,7 +14,7 @@ public class AutomatedBuild
         //Add all scenes we want to build
         string[] scenes = { "Assets/Scenes/SampleScene.unity" };
 
-        string outputPath = "Builds/VRApp.apk"; 
+        string outputPath = "build/Android/build.apk"; 
 
         // Ensure output directory exists
         Directory.CreateDirectory("Builds");
