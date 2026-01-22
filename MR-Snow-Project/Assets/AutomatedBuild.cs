@@ -14,10 +14,10 @@ public class AutomatedBuild
         //Add all scenes we want to build
         string[] scenes = { "Assets/Scenes/SampleScene.unity" };
 
-        string outputPath = "build/Android/build.apk"; 
+        string outputPath = "builds/Android/build.apk"; 
 
         // Ensure output directory exists
-        Directory.CreateDirectory("Builds");
+        Directory.CreateDirectory("builds");
 
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.scenes = scenes;
