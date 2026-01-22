@@ -1,0 +1,34 @@
+name: Build Unity VR Project
+
+on: [push, pull_request]
+
+jobs:
+  buildForQuest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true 
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Use a community action to handle Unity activation and build
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: Android
+          # Call custom script in Unity Editor
+          buildMethod: AutomatedBuild.BuildAndroid
+
+      # Upload the resulting APK as an artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VR-Android-Build
+          path: Builds/VRApp.apk 
