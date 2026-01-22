@@ -9,6 +9,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true 
+          fetch-depth: 0
       - uses: actions/cache@v4
         with:
           path: Library
@@ -23,9 +24,13 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
+          projectPath: "MR-Snow-Project/"
           targetPlatform: Android
           # Call custom script in Unity Editor
           buildMethod: AutomatedBuild.BuildAndroid
+          unityVersion: auto
+          versioning: Semantic
+          androidAppBundle: false
 
       # Upload the resulting APK as an artifact
       - uses: actions/upload-artifact@v4
