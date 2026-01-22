@@ -10,30 +10,36 @@ jobs:
         with:
           lfs: true 
           fetch-depth: 0
+      
       - uses: actions/cache@v4
         with:
           path: MR-Snow-Project/Library
           key: Library-${{ hashFiles('MR-Snow-Project/Assets/**', 'MR-Snow-Project/ProjectSettings/**', 'MR-Snow-Project/Packages/**') }}
           restore-keys: |
             Library-
-
-      # Use a community action to handle Unity activation and build
+      
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          projectPath: "MR-Snow-Project/"
+          projectPath: MR-Snow-Project/
           targetPlatform: Android
-          # Call custom script in Unity Editor
           buildMethod: AutomatedBuild.BuildAndroid
           unityVersion: 6000.0.66f1
-          customImage: 'unityci/editor:ubuntu-6000.0.66f1-android-3'
           versioning: Semantic
-
-      # Upload the resulting APK as an artifact
+      
+      - name: Check build output
+        run: |
+          echo "=== Searching for APK files ==="
+          find . -name "*.apk" -type f
+      
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: VR-Android-Build
-          path: builds/Android/build.apk
+          path: |
+            **/builds/Android/*.apk
+            builds/**/*.apk
+            MR-Snow-Project/builds/**/*.apk
