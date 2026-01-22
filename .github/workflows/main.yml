@@ -18,7 +18,7 @@ jobs:
             Library-
 
       # Use a community action to handle Unity activation and build
-      - uses: game-ci/unity-builder@v2
+      - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
