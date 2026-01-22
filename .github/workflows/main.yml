@@ -24,7 +24,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          projectPath: MR-Snow-Project/
+          projectPath: "MR-Snow-Project/"
           targetPlatform: Android
           buildMethod: AutomatedBuild.BuildAndroid
           unityVersion: 6000.0.66f1
