@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ public class AutomatedBuild
         };
 
         string buildPath = "builds/Android/build.apk";
+
+        // Set required Android settings
+        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel29;
+        PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel34;
 
         //Log paths
         Debug.Log($"Building to: {buildPath}");
