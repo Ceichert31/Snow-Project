@@ -7,13 +7,10 @@ public class AutomatedBuild
 {
     public static void BuildAndroid()
     {
-        string[] scenes = new string[SceneManager.sceneCount];
-
-        for (int i = 0; i < SceneManager.sceneCount - 1; i++)
+        string[] scenes = new string[]
         {
-            var scene = SceneManager.GetSceneAt(i);
-            scenes[i] = scene.path;
-        }
+               "Assets/Scenes/SampleScene.unity"
+        };
 
         string buildPath = "builds/Android/build.apk";
 
@@ -34,7 +31,7 @@ public class AutomatedBuild
         else
         {
             Debug.LogError("BUILD FAILED");
-            EditorApplication.Exit(5);
+            EditorApplication.Exit(-1);
         }
     }
 }
