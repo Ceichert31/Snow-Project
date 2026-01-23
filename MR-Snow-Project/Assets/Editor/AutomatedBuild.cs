@@ -1,15 +1,19 @@
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AutomatedBuild
 {
     public static void BuildAndroid()
     {
-        string[] scenes = new string[]
+        string[] scenes = new string[SceneManager.sceneCount];
+
+        for (int i = 0; i < SceneManager.sceneCount - 1; i++)
         {
-            "Assets/Scenes/SampleScene.unity"
-        };
+            var scene = SceneManager.GetSceneAt(i);
+            scenes[i] = scene.path;
+        }
 
         string buildPath = "builds/Android/build.apk";
 
