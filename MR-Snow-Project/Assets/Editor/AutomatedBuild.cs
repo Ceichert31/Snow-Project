@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
@@ -7,10 +8,10 @@ public class AutomatedBuild
 {
     public static void BuildAndroid()
     {
-        string[] scenes = new string[]
-        {
-               "Assets/Scenes/SampleScene.unity"
-        };
+        string[] scenes = EditorBuildSettings
+            .scenes.Where(scene => scene.enabled)
+            .Select(scene => scene.path)
+            .ToArray();
 
         string buildPath = "builds/Android/build.apk";
 
@@ -19,7 +20,7 @@ public class AutomatedBuild
             scenes = scenes,
             locationPathName = buildPath,
             target = BuildTarget.Android,
-            options = BuildOptions.None
+            options = BuildOptions.None,
         };
 
         BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
