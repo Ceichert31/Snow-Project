@@ -78,6 +78,6 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: VR-Android-Build-${{ github.sha }}
+          name: VR-Android-Build
           path: MR-Snow-Project/builds/Android/*.apk
           retention-days: 7 
