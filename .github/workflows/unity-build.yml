@@ -1,0 +1,81 @@
+name: Build Unity VR
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'MR-Snow-Project/Assets/**'
+      - 'MR-Snow-Project/ProjectSettings/**'
+      - 'MR-Snow-Project/Packages/**'
+      - '.github/workflows/build-unity.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'MR-Snow-Project/Assets/**'
+      - 'MR-Snow-Project/ProjectSettings/**'
+      - 'MR-Snow-Project/Packages/**'
+      - '.github/workflows/build-unity.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true 
+          fetch-depth: 0
+
+      - name: Free Disk Space
+        run: |
+          echo "Disk space before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo apt-get clean
+          sudo apt-get remove -y '^aspnetcore-.*' '^dotnet-.*' '^llvm-.*' 'php.*' '^mongodb-.*' '^mysql-.*' || true
+          sudo apt-get remove -y azure-cli google-cloud-sdk google-chrome-stable firefox powershell mono-devel || true
+          sudo apt-get autoremove -y
+          sudo apt-get autoclean -y
+          echo "Disk space after cleanup:"
+          df -h
+
+      #Cache Unity library
+      - uses: actions/cache@v4
+        with:
+          path: MR-Snow-Project/Library
+          key: Library-${{ hashFiles('MR-Snow-Project/Assets/**', 'MR-Snow-Project/ProjectSettings/**', 'MR-Snow-Project/Packages/**') }}
+          restore-keys: Library-
+
+      #Cache Gradle 
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.android/build-cache
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: gradle-${{ runner.os }}-
+
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: "MR-Snow-Project/"
+          targetPlatform: Android
+          buildMethod: AutomatedBuild.BuildAndroid
+          unityVersion: 6000.0.66f1
+          versioning: Semantic
+
+      - name: Check disk space after build
+        if: always()
+        run: df -h
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VR-Android-Build-${{ github.sha }}
+          path: MR-Snow-Project/builds/Android/*.apk
+          retention-days: 7 
