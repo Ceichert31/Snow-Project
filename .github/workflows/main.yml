@@ -1,9 +1,13 @@
-name: Build Unity VR Project
+name: Build Unity VR
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  buildForQuest:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
