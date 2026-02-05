@@ -33,8 +33,6 @@ jobs:
         env:
           QUEST_IP: ${{ secrets.QUEST_IP }}
         run: |
-          adb tcpip 5555
-          echo "::add-mask::$QUEST_IP"
           adb connect $QUEST_IP:5555
           sleep 2
           adb -s $QUEST_IP:5555 shell svc power stayon true
@@ -44,7 +42,6 @@ jobs:
         env:
           QUEST_IP: ${{ secrets.QUEST_IP }}
         run: |
-          echo "Connecting to Quest at $QUEST_IP..."
           adb connect $QUEST_IP:5555
           sleep 5
 
