@@ -20,14 +20,16 @@ public class AutomatedBuild
             scenes = scenes,
             locationPathName = buildPath,
             target = BuildTarget.Android,
-            options = BuildOptions.None,
+            options = BuildOptions.Development | BuildOptions.CompressWithLz4, // Faster compression
         };
 
         BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
 
         if (report.summary.result == BuildResult.Succeeded)
         {
-            Debug.Log($"BUILD SUCCEEDED | Size: {report.summary.totalSize} bytes");
+            Debug.Log(
+                $"BUILD SUCCEEDED | Size: {report.summary.totalSize} bytes | Time: {report.summary.totalTime}"
+            );
         }
         else
         {
