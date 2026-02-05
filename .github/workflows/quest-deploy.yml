@@ -1,0 +1,47 @@
+name: Deploy to Quest
+on:
+  workflow_run:
+    workflows: ["Build Unity VR"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:  #Allow manual deployment
+    inputs:
+      run_id:
+        description: 'Build run ID to deploy (leave empty for latest)'
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: VR-Android-Build-${{ github.event.workflow_run.head_sha || github.sha }}
+          path: ./build
+
+      - name: Setup ADB
+        run: sudo apt-get update && sudo apt-get install -y android-tools-adb
+
+      - name: Deploy to Quest
+        env:
+          QUEST_IP: ${{ secrets.QUEST_IP }}
+        run: |
+          echo "Connecting to Quest at $QUEST_IP..."
+          adb connect $QUEST_IP:5555
+          sleep 5
+          adb devices
+          
+          #Find the APK file
+          APK_FILE=$(find ./build -name "*.apk" | head -n 1)
+          
+          if [ -z "$APK_FILE" ]; then
+            echo "Error: No APK file found"
+            exit 1
+          fi
+          
+          echo "Installing $APK_FILE..."
+          adb -s $QUEST_IP:5555 install -r "$APK_FILE"
+          
+          echo "Deployment complete!"
