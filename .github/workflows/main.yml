@@ -3,8 +3,11 @@ name: Build Unity VR
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths:
+      - 'MR-Snow-Project/Assets/**'
+      - 'MR-Snow-Project/ProjectSettings/**'
+      - 'MR-Snow-Project/Packages/**'
+      - '.github/workflows/**'
 
 jobs:
   build:
