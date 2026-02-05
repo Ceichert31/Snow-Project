@@ -1,9 +1,13 @@
-name: Build Unity VR Project
+name: Build Unity VR
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  buildForQuest:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -62,6 +66,9 @@ jobs:
       - name: Check disk space after build
         if: always()
         run: df -h
+
+      - name: Setup ADB
+        run: sudo apt-get install android-tools-adb
       
       - uses: actions/upload-artifact@v4
         if: always()
@@ -71,3 +78,15 @@ jobs:
             **/builds/Android/*.apk
             builds/**/*.apk
             MR-Snow-Project/builds/**/*.apk
+
+
+      - name: Deploy to Quest
+        env:
+          QUEST_IP: ${{ secrets.QUEST_IP }}
+        run: |
+          adb connect $QUEST_IP:5555
+          # Wait for device to connect
+          sleep 5
+          adb devices
+          # Install the APK
+          adb -s $QUEST_IP:5555 install -r app/build/outputs/apk/debug/app-debug.apk
