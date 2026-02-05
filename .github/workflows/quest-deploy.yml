@@ -31,14 +31,36 @@ jobs:
           echo "Connecting to Quest at $QUEST_IP..."
           adb connect $QUEST_IP:5555
           sleep 5
+
+          #Check connection status
+          CONNECTED_DEVICES=$(adb devices | grep "$QUEST_IP:5555")
+
+          #If not connected, tell user
+          if [ -z "$CONNECTED_DEVICES" ]; then
+          echo "Failed to connect to Quest at port 5555"
+          echo ""
+          echo "Troubleshooting steps:"
+          echo "1. Ensure your Quest is on the same network as the runner"
+          echo "2. Enable Developer Mode on your Quest"
+          echo "3. Connect Quest via USB cable to your computer and run:"
+          echo "   adb tcpip 5555"
+          echo "4. Verify the Quest IP is correct"
+          echo "5. Try connecting manaually, <quest_ip>:5555"
+          echo ""
+          echo "Current ADB devices:"
+          adb devices
+          exit 1
+          fi
+    
+          echo "Successfully connected to Quest"
           adb devices
           
           #Find the APK file
           APK_FILE=$(find ./build -name "*.apk" | head -n 1)
           
           if [ -z "$APK_FILE" ]; then
-            echo "Error: No APK file found"
-            exit 1
+          echo "Error: No APK file found"
+          exit 1
           fi
           
           echo "Installing $APK_FILE..."
