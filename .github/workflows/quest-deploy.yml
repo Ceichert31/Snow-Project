@@ -29,14 +29,14 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y android-tools-adb
 
       #Connect to quest and turn off automated sleep
-      - name: Disable Quest auto-sleep
-        env:
-          QUEST_IP: ${{ secrets.QUEST_IP }}
-        run: |
-          adb connect $QUEST_IP:5037
-          sleep 2
-          adb -s $QUEST_IP:5037 shell svc power stayon true
-          echo "Quest auto-sleep disabled"
+      #- name: Disable Quest auto-sleep
+      #  env:
+       #   QUEST_IP: ${{ secrets.QUEST_IP }}
+       # run: |
+        #  adb connect $QUEST_IP:5037
+         # sleep 2
+         # adb -s $QUEST_IP:5037 shell svc power stayon true
+         # echo "Quest auto-sleep disabled"
 
       - name: Deploy to Quest
         env:
@@ -82,9 +82,9 @@ jobs:
           echo "Deployment complete!"
 
       #Re-enable sleep settings after deployment
-      - name: Enable Quest auto-sleep
-        if: always()
-        env:
-          QUEST_IP: ${{ secrets.QUEST_IP }}
-        run: |
-          adb -s $QUEST_IP:5037 shell svc power stayon false || true
+      #- name: Enable Quest auto-sleep
+       # if: always()
+       # env:
+        #  QUEST_IP: ${{ secrets.QUEST_IP }}
+        #run: |
+        #  adb -s $QUEST_IP:5037 shell svc power stayon false || true
