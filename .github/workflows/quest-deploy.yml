@@ -42,7 +42,7 @@ jobs:
         env:
           QUEST_IP: ${{ secrets.QUEST_IP }}
         run: |
-          adb connect $QUEST_IP:5037
+          adb connect $QUEST_IP:5555
           sleep 5
 
           #Check connection status
@@ -77,7 +77,7 @@ jobs:
           fi
           
           echo "Installing $APK_FILE..."
-          adb -s $QUEST_IP:5037 install -r "$APK_FILE"
+          adb -s $QUEST_IP:5555 install -r "$APK_FILE"
           
           echo "Deployment complete!"
 
