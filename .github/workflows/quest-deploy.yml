@@ -42,7 +42,7 @@ jobs:
         env:
           QUEST_IP: ${{ secrets.QUEST_IP }}
         run: |
-          adb connect $QUEST_IP:5555
+          adb connect $QUEST_IP
           sleep 5
 
           #Check connection status
