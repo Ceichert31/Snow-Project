@@ -1,9 +1,5 @@
 name: Deploy to Quest
 on:
-  workflow_run:
-    workflows: ["Build Unity VR"]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:  #Allow manual deployment
     inputs:
       run_id:
