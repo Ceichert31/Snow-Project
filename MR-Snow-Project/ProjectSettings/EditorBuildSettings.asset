@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/XR Interaction Toolkit/3.0.10/Hands Interaction Demo/HandsDemoScene.unity
-    guid: 3ff35cecbcc52cc42945cf531638a60a
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Samples/OpenXR Plugin/1.16.1/Meshing Subsystem Feature/MeshingFeature.unity
+    guid: d1889e247a55eae4d96baf9f3b786800
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: bc3463c0764f4844dabb5d28d105c1ad, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 437b0dc18bd5ed04f83f7e067be6c370, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: d7ee18b07e1fac4418cbfa5bb4362d13, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: b270c5f246f986d4787b2810b8ae8413, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0273accd8f20ba74d9220f7b979f3464, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: c4381970e6800fd49a108245a3278586, type: 2}
   m_UseUCBPForAssetBundles: 0

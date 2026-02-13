@@ -1,5 +1,4 @@
 {
-    "version": 1,
     "name": "XRI Default Input Actions",
     "maps": [
         {
@@ -976,15 +975,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Menu Open",
-                    "type": "Button",
-                    "id": "ef059be7-c7b0-49e8-ae03-b24de231de27",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1271,17 +1261,6 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "",
                     "action": "Translate Manipulation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "62e2bd0d-c972-40ba-8152-cc857f9ea38e",
-                    "path": "<MetaAimHand>{LeftHand}/middlePressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu Open",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -2067,15 +2046,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Menu Open",
-                    "type": "Button",
-                    "id": "45a53368-8374-4e6f-af8b-4280eee48688",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -2362,17 +2332,6 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "",
                     "action": "Translate Manipulation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6d0e3283-70c0-4b99-af5f-d8c86a471ac1",
-                    "path": "<MetaAimHand>{RightHand}/middlePressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu Open",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
