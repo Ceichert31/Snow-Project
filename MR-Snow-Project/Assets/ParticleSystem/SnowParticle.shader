@@ -19,6 +19,13 @@ Shader "Unlit/SnowParticle"
 
             #include "UnityCG.cginc"
 
+            struct Particle
+            {
+                float3 position;
+                float3 velocity;
+                float lifetime;
+            };
+
             struct appdata
             {
                 float4 vertex : POSITION;

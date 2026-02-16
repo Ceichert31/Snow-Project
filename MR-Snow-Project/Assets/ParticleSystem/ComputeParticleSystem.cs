@@ -25,6 +25,9 @@ public class ComputeParticleSystem : MonoBehaviour
     [SerializeField]
     private ComputeShader computeShader;
 
+    [SerializeField]
+    private Vector2 targetPosition;
+
     private int kernelId;
 
     private ComputeBuffer particleBuffer;
@@ -73,11 +76,24 @@ public class ComputeParticleSystem : MonoBehaviour
         groupSizeX = Mathf.CeilToInt((float)particleCount / (float)threadsX);
 
         //Set buffer on compute shader
-        computeShader.SetBuffer(kernelId, "particleBuffer", particleBuffer);
+        computeShader.SetBuffer(kernelId, "_ParticleBuffer", particleBuffer);
 
         //Set buffer on particle material
-        particleMaterial.SetBuffer("particleBuffer", particleBuffer);
+        particleMaterial.SetBuffer("_ParticleBuffer", particleBuffer);
 
         renderParams = new RenderParams(particleMaterial);
+        renderParams.worldBounds = new Bounds(Vector3.zero, 10000 * Vector3.one);
+    }
+
+    private void Update()
+    {
+        computeShader.SetFloat("_DeltaTime", Time.deltaTime);
+        computeShader.SetVector("_TargetPosition", targetPosition);
+
+        //Run the compute shader
+        computeShader.Dispatch(kernelId, groupSizeX, 1, 1);
+
+        //Draw call for our particles
+        Graphics.RenderPrimitives(renderParams, MeshTopology.Points, 1, particleCount);
     }
 }
