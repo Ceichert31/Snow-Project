@@ -26,7 +26,12 @@ public class ComputeParticleSystem : MonoBehaviour
     private ComputeShader computeShader;
 
     [SerializeField]
-    private Vector2 targetPosition;
+    private float particleLifetime = 4;
+
+    [SerializeField]
+    private float spawnRadius = 3f;
+
+    private float particleLifetimeMax;
 
     private int kernelId;
 
@@ -44,21 +49,15 @@ public class ComputeParticleSystem : MonoBehaviour
         for (int i = 0; i < particleCount; ++i)
         {
             Vector3 pos = new Vector3();
-            //Keep within homogenous coordinate space, between -1 and 1
-            //assuming w = 1
-            pos.x = Random.value * 2 - 1.0f;
-            pos.y = Random.value * 2 - 1.0f;
-            pos.z = Random.value * 2 - 1.0f;
-            pos.Normalize();
 
-            pos *= Random.value * 5;
+            pos = Random.insideUnitCircle * spawnRadius;
 
             particleArray[i].position = pos;
 
             particleArray[i].velocity = Vector3.zero;
 
             //Random values for testing purposes
-            particleArray[i].lifetime = Random.Range(1, 7);
+            particleArray[i].lifetime = Random.Range(1, particleLifetime);
         }
 
         //Create new compute buffer
@@ -81,6 +80,10 @@ public class ComputeParticleSystem : MonoBehaviour
         //Set buffer on particle material
         particleMaterial.SetBuffer("_ParticleBuffer", particleBuffer);
 
+        //Set the maximum lifetime of a particle for lerp calculations
+        particleLifetimeMax = 1.0f / particleLifetime;
+        particleMaterial.SetFloat("_MaxLifetime", particleLifetimeMax);
+
         renderParams = new RenderParams(particleMaterial);
         renderParams.worldBounds = new Bounds(Vector3.zero, 10000 * Vector3.one);
     }
@@ -88,12 +91,27 @@ public class ComputeParticleSystem : MonoBehaviour
     private void Update()
     {
         computeShader.SetFloat("_DeltaTime", Time.deltaTime);
-        computeShader.SetVector("_TargetPosition", targetPosition);
+        computeShader.SetVector("_TargetDirection", transform.forward);
+        computeShader.SetVector("_SpawnPosition", transform.position);
+        computeShader.SetFloat("_SpawnRadius", spawnRadius);
+        computeShader.SetFloat("_Lifetime", particleLifetime);
 
         //Run the compute shader
         computeShader.Dispatch(kernelId, groupSizeX, 1, 1);
 
         //Draw call for our particles
         Graphics.RenderPrimitives(renderParams, MeshTopology.Points, 1, particleCount);
+    }
+
+    private void OnDestroy()
+    {
+        particleBuffer?.Release();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 1.5f, Color.green);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }

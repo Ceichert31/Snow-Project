@@ -3,17 +3,70 @@
 
 struct Particle
 {
-    
+    float3 position;
+    float3 velocity;
+    float lifetime;
 };
 
 // Create a RenderTexture with enableRandomWrite flag and set it
 // with cs.SetTexture
-RWTexture2D<float4> Result;
+RWStructuredBuffer<Particle> _ParticleBuffer;
 
-[numthreads(8,8,1)]
-void CSMain (uint3 id : SV_DispatchThreadID)
+float _DeltaTime;
+
+float3 _TargetDirection;
+
+float3 _SpawnPosition;
+
+float _SpawnRadius;
+
+float _Lifetime;
+
+uint rngState;
+
+uint rand_xorshift()
 {
-    // TODO: insert actual code here!
+    rngState ^= (rngState << 13);
+    rngState ^= (rngState >> 17);
+    rngState ^= (rngState << 5);
+    return rngState;
+}
 
-    Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
+float2 getRandomPoint()
+{
+    float x = rand_xorshift() % _SpawnRadius;
+    float y = rand_xorshift() % _SpawnRadius;
+
+    return float2(x, y);
+}
+
+
+void respawnParticle(uint id)
+{
+    float2 randPos = getRandomPoint();
+    _ParticleBuffer[id].position = float3(randPos.x, randPos.y, 0);
+    _ParticleBuffer[id].lifetime = _Lifetime;
+    _ParticleBuffer[id].velocity = _TargetDirection;
+}
+
+//Could try 64 if performance isn't great, this may be using more registers than we need
+[numthreads(256,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{    
+    rngState = id.x;
+    
+    //Cache particle
+    Particle particle = _ParticleBuffer[id.x];
+    
+    particle.lifetime -= _DeltaTime;
+    
+    float3 direction = normalize(_TargetDirection);
+    
+    particle.velocity += direction;
+    particle.position += particle.velocity * _DeltaTime;
+
+    _ParticleBuffer[id.x] = particle;
+    
+    if (particle.lifetime < 0)
+        respawnParticle(id.x);
 }
