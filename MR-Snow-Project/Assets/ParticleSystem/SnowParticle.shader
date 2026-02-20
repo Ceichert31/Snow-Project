@@ -45,7 +45,7 @@ Shader "Custom/SnowParticle"
             {
                 float4 positionHCS  : SV_POSITION;
                 float4 color : COLOR;
-                float size: PSIZE;
+                float size: TEXCOORD0;
             };
 
             Varyings vert(Attributes IN)
@@ -66,6 +66,7 @@ Shader "Custom/SnowParticle"
 
             half4 frag(Varyings IN) : SV_Target
             {
+
                 return IN.color;
             }
             ENDHLSL

@@ -1,6 +1,8 @@
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel CSMain
 
+#pragma enable_d3d11_debug_symbols
+
 struct Particle
 {
     float3 position;

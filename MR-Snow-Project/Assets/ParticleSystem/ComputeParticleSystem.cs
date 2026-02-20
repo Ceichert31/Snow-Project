@@ -101,6 +101,7 @@ public class ComputeParticleSystem : MonoBehaviour
 
         //Draw call for our particles
         Graphics.RenderPrimitives(renderParams, MeshTopology.Points, 1, particleCount);
+        //Graphics.DrawMeshInstancedIndirect()
     }
 
     private void OnDestroy()
