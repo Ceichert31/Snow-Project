@@ -1,0 +1,38 @@
+// SnowStamp.compute
+// CSFill  — set every texel to a value
+// CSStamp — add/subtract a circle at a position
+
+#pragma kernel CSFill
+#pragma kernel CSStamp
+
+RWTexture2D<float> _SplatMap;
+float _TexSize;
+
+float _FillValue;
+
+float2 _StampCenter;
+float _StampRadius;
+float _StampIntensity;
+
+[numthreads(8, 8, 1)]
+void CSFill(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_TexSize || id.y >= (uint)_TexSize) return;
+    _SplatMap[int2(id.xy)] = _FillValue;
+}
+
+[numthreads(8, 8, 1)]
+void CSStamp(uint3 id : SV_DispatchThreadID)
+{
+    int2 texel = int2(_StampCenter) - int(_StampRadius) + int2(id.xy);
+
+    if (texel.x < 0 || texel.x >= (int)_TexSize ||
+        texel.y < 0 || texel.y >= (int)_TexSize)
+        return;
+
+    float dist = distance(float2(texel), _StampCenter);
+    if (dist > _StampRadius) return;
+
+    float falloff = smoothstep(1.0, 0.0, dist / _StampRadius);
+    _SplatMap[texel] = saturate(_SplatMap[texel] + _StampIntensity * falloff);
+}
