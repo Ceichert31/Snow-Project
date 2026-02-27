@@ -19,17 +19,17 @@ MonoBehaviour:
     leftHandLocalPosition: {x: 0, y: -0.17, z: 0}
     rightHandLocalRotation: {x: 0, y: 90, z: 90}
     leftHandLocalRotation: {x: 0, y: -90, z: -90}
-    palmReferenceAxis: 0
-    invertAxisForRightHand: 1
-    requirePalmFacingUser: 1
-    palmFacingUserDegreeAngleThreshold: 54
+    palmReferenceAxis: 4
+    invertAxisForRightHand: 0
+    requirePalmFacingUser: 0
+    palmFacingUserDegreeAngleThreshold: 90
     requirePalmFacingUp: 1
-    palmFacingUpDegreeAngleThreshold: 72
+    palmFacingUpDegreeAngleThreshold: 90
     hideDelaySeconds: 0.15
     PalmFacingUserHideMenuAngleThresholdDelta: 15
     PalmFacingUpHideMenuAngleThresholdDelta: 15
-    snapToGaze: 1
+    snapToGaze: 0
     snapToGazeAngleThreshold: 30
-    allowSmoothing: 1
+    allowSmoothing: 0
     followLowerSmoothingValue: 12
     followUpperSmoothingValue: 16
