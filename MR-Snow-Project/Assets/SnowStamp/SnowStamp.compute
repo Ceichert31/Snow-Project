@@ -1,18 +1,11 @@
-// SnowStamp.compute
-// CSFill  — set every texel to a value
-// CSStamp — add/subtract a circle at a position
-
 #pragma kernel CSFill
 #pragma kernel CSStamp
+#pragma kernel CSAccumulate
 
 RWTexture2D<float> _SplatMap;
 float _TexSize;
 
 float _FillValue;
-
-float2 _StampCenter;
-float _StampRadius;
-float _StampIntensity;
 
 [numthreads(8, 8, 1)]
 void CSFill(uint3 id : SV_DispatchThreadID)
@@ -20,6 +13,11 @@ void CSFill(uint3 id : SV_DispatchThreadID)
     if (id.x >= (uint)_TexSize || id.y >= (uint)_TexSize) return;
     _SplatMap[int2(id.xy)] = _FillValue;
 }
+
+float2 _StampCenter;
+float _StampRadius;
+float _StampIntensity;
+float _MaxHeight;
 
 [numthreads(8, 8, 1)]
 void CSStamp(uint3 id : SV_DispatchThreadID)
@@ -35,4 +33,24 @@ void CSStamp(uint3 id : SV_DispatchThreadID)
 
     float falloff = smoothstep(1.0, 0.0, dist / _StampRadius);
     _SplatMap[texel] = saturate(_SplatMap[texel] + _StampIntensity * falloff);
+}
+
+Texture2D<float> _SplatRT;
+float _AccumRate;
+
+[numthreads(8, 8, 1)]
+void CSAccumulate(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_TexSize || id.y >= (uint)_TexSize) return;
+    
+    float2 uv = (float2(id.xy) + 0.5) / _TexSize;
+
+    uint2 splatRes;
+    _SplatRT.GetDimensions(splatRes.x, splatRes.y);
+    uint2 splatCoord = uint2(uv * float2(splatRes));
+
+    float existing = _SplatMap[int2(id.xy)];
+    float incoming = _SplatRT[int2(splatCoord)];
+
+    _SplatMap[int2(id.xy)] = clamp(existing + incoming * _AccumRate, 0, _MaxHeight);
 }
