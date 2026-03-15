@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1328699047368285399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997431136661814452}
+  - component: {fileID: 2134763476305771669}
+  m_Layer: 0
+  m_Name: SnowStampController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997431136661814452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328699047368285399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2134763476305771669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328699047368285399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02f8c257fba43d1967172dbc6b8e041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splatMap: {fileID: 8400000, guid: 33c3a2a7f740f7143b15b987d5b776de, type: 2}
+  compute: {fileID: 7200000, guid: 20402b5c4e44d3d4f85bef3720ac51d3, type: 3}
+  groundPlane: {fileID: 0}
+  startLevel: 0
+  maxHeight: 20
+  stepSize: 0.1
+  stampRadius: 0.1
+  splatRT: {fileID: 8400000, guid: 57964e6bc6e3ba245a0d15b55aeef535, type: 2}
+  accumRate: 0.05
