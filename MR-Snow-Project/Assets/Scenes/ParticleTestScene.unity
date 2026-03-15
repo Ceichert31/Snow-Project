@@ -563,14 +563,6 @@ MonoBehaviour:
   stampRadius: 0.1
   splatRT: {fileID: 8400000, guid: 57964e6bc6e3ba245a0d15b55aeef535, type: 2}
   accumRate: 0.05
---- !u!81 &2136655607442664011
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993653692590463381}
-  m_Enabled: 1
 --- !u!4 &2138269934970580550
 Transform:
   m_ObjectHideFlags: 0
@@ -586,14 +578,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &3025402277304635958
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6437795528310922332}
-  m_Enabled: 1
 --- !u!1 &3312570803436310883
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +803,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3446266219323981506}
   - component: {fileID: 5629839889917044635}
-  - component: {fileID: 3025402277304635958}
   - component: {fileID: 7539638384655970408}
   m_Layer: 8
   m_Name: SplatCamera
@@ -907,7 +890,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: 1
+  m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1089,7 +1072,6 @@ GameObject:
   m_Component:
   - component: {fileID: 442953190787480035}
   - component: {fileID: 6131420843035577802}
-  - component: {fileID: 2136655607442664011}
   - component: {fileID: 7431358858105730488}
   m_Layer: 0
   m_Name: BaseHeightCamera

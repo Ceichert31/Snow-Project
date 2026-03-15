@@ -609,7 +609,6 @@ MonoBehaviour:
   - {fileID: -6651767416400966792}
   - {fileID: -4522938803910241447}
   - {fileID: 8822074535081494180}
-  - {fileID: 5855498618306008559}
   - {fileID: -412747242234973671}
   - {fileID: 4450627909042581789}
   customLoaderName: 
@@ -845,7 +844,6 @@ MonoBehaviour:
   - {fileID: -8409612076481467273}
   - {fileID: 947708889620502310}
   - {fileID: -6021370220782710840}
-  - {fileID: 4553690160488464239}
   - {fileID: -6582856480903309372}
   - {fileID: 6097816456417493910}
   - {fileID: 6587304339196702284}
@@ -1354,6 +1352,7 @@ MonoBehaviour:
   m_Name: MeshingTeapotFeature Standalone
   m_EditorClassIdentifier: 
   m_enabled: 1
+  <failedInitialization>k__BackingField: 0
   nameUi: 'Sample: Meshing Teapot'
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.example.meshing
@@ -1443,6 +1442,7 @@ MonoBehaviour:
   m_Name: MeshingTeapotFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 1
+  <failedInitialization>k__BackingField: 0
   nameUi: 'Sample: Meshing Teapot'
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.example.meshing
