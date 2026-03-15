@@ -8,6 +8,9 @@ public class ButtonLogic : MonoBehaviour
     [SerializeField]
     private GameObject settingsMenu;
 
+    [SerializeField]
+    private GameObject mainMenu;
+
     public void Quit()
     {
         Debug.Log("Quitting...");
@@ -16,12 +19,13 @@ public class ButtonLogic : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
-        //Open new worldspace menu
-        //Possible settings:
-        //Snow fall rate
-        //Toggle snow
-
         settingsMenu.SetActive(true);
-        gameObject.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+
+    public void CloseSettingsMenu()
+    {
+        mainMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 }
