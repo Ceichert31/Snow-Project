@@ -1,3 +1,4 @@
+/*using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
@@ -8,9 +9,20 @@ public class TopDownFeature : ScriptableRendererFeature
 {
     class CustomRenderPass : ScriptableRenderPass
     {
+        private FilteringSettings filterSettings;
+        private ProfilingSampler profileSampler;
+        private List<ShaderTagId> shaderTagList = new List<ShaderTagId>();
+        private RTHandle colorTarget;
+        private RTHandle depthTarget;
+
         // This class stores the data needed by the RenderGraph pass.
         // It is passed as a parameter to the delegate function that executes the RenderGraph pass.
         private class PassData { }
+
+        public CustomRenderPass(string name)
+        {
+            profileSampler = new ProfilingSampler(name);
+        }
 
         // This static method is passed as the RenderFunc delegate to the RenderGraph render pass.
         // It is used to execute draw commands.
@@ -50,9 +62,6 @@ public class TopDownFeature : ScriptableRendererFeature
             }
         }
 
-        private RTHandle colorTarget;
-        private RTHandle depthTarget;
-
         // NOTE: This method is part of the compatibility rendering path, please use the Render Graph API above instead.
         // This method is called before executing the render pass.
         // It can be used to configure render targets and their clear state. Also to create temporary render target textures.
@@ -67,6 +76,14 @@ public class TopDownFeature : ScriptableRendererFeature
             colorDescription.colorFormat = RenderTextureFormat.R8;
 
             RenderingUtils.ReAllocateIfNeeded(ref colorTarget, colorDescription);
+
+            var depthDescription = renderingData.cameraData.cameraTargetDescriptor;
+
+            depthDescription.depthBufferBits = 32;
+
+            ConfigureTarget(colorTarget, depthTarget);
+
+            ConfigureClear(ClearFlag.Color, Color.black);
         }
 
         // NOTE: This method is part of the compatibility rendering path, please use the Render Graph API above instead.
@@ -77,7 +94,20 @@ public class TopDownFeature : ScriptableRendererFeature
         public override void Execute(
             ScriptableRenderContext context,
             ref RenderingData renderingData
-        ) { }
+        )
+        {
+            CommandBuffer cmd = CommandBufferPool.Get();
+
+            using (new ProfilingScope(cmd, profileSampler))
+            {
+                context.ExecuteCommandBuffer(cmd);
+                cmd.Clear();
+            }
+
+            context.ExecuteCommandBuffer(cmd);
+            cmd.Clear();
+            CommandBufferPool.Release(cmd);
+        }
 
         // NOTE: This method is part of the compatibility rendering path, please use the Render Graph API above instead.
         // Cleanup any allocated resources that were created during the execution of this render pass.
@@ -105,3 +135,4 @@ public class TopDownFeature : ScriptableRendererFeature
         renderer.EnqueuePass(m_ScriptablePass);
     }
 }
+*/
