@@ -14,7 +14,7 @@ public class RequestSpatialPermissions : MonoBehaviour
     private UnityEvent OnPermissionDenied;
     const string spatialPermission = "com.oculus.permission.USE_SCENE";
 
-    private void Awake()
+    private void OnEnable()
     {
         bool hasUserAuthorizedPermission =
             UnityEngine.Android.Permission.HasUserAuthorizedPermission(spatialPermission);
@@ -27,6 +27,20 @@ public class RequestSpatialPermissions : MonoBehaviour
             callbacks.PermissionDenied += OnDenied;
 
             UnityEngine.Android.Permission.RequestUserPermission(spatialPermission);
+        }
+    }
+
+    private void OnDisable()
+    {
+        bool hasUserAuthorizedPermission =
+            UnityEngine.Android.Permission.HasUserAuthorizedPermission(spatialPermission);
+
+        if (!hasUserAuthorizedPermission)
+        {
+            var callbacks = new UnityEngine.Android.PermissionCallbacks();
+
+            callbacks.PermissionGranted -= OnGranted;
+            callbacks.PermissionDenied -= OnDenied;
         }
     }
 
