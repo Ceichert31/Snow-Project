@@ -1645,9 +1645,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2036204237}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_MaxValue: 500
+  m_WholeNumbers: 1
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3453,6 +3453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841460185}
   - component: {fileID: 1841460186}
+  - component: {fileID: 1841460187}
   m_Layer: 0
   m_Name: Settings Hand Menu
   m_TagString: Untagged
@@ -3547,6 +3548,20 @@ MonoBehaviour:
       followLowerSmoothingValue: 12
       followUpperSmoothingValue: 16
     m_Variable: {fileID: 11400000, guid: 2899508b1645c5e4fa421b4217da9539, type: 2}
+--- !u!114 &1841460187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841460184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8b3d492958c2a42bd53270cb5e263a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRateSlider: {fileID: 1108407187}
+  snowEnabledToggle: {fileID: 338331611}
 --- !u!1001 &1857396045
 PrefabInstance:
   m_ObjectHideFlags: 0
