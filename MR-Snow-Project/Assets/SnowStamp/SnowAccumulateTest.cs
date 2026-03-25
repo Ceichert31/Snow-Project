@@ -6,23 +6,32 @@ namespace SnowStamp
     {
         [SerializeField]
         private RenderTexture splatMap;
+
         [SerializeField]
         private ComputeShader compute;
+
         [SerializeField]
         private Transform groundPlane;
 
         [SerializeField]
         private float startLevel = 0.5f;
+
         [SerializeField]
         private float maxHeight = 20f;
+
         [SerializeField]
         private float stepSize = 0.1f;
+
         [SerializeField]
         private float stampRadius = 0.1f;
         private int fillKernel;
-        [SerializeField] private RenderTexture splatRT;
-        [SerializeField] private float accumRate = 0.05f;
-        
+
+        [SerializeField]
+        private RenderTexture splatRT;
+
+        [SerializeField]
+        private float accumRate = 0.05f;
+
         private int accumKernel;
 
         private RenderTexture readRT;
@@ -33,13 +42,14 @@ namespace SnowStamp
             fillKernel = compute.FindKernel("CSFill");
             stampKernel = compute.FindKernel("CSStamp");
 
-            if (!splatMap.IsCreated()) splatMap.Create();
+            if (!splatMap.IsCreated())
+                splatMap.Create();
 
             readRT = new RenderTexture(splatMap.width, splatMap.height, 0, splatMap.graphicsFormat);
             readRT.Create();
 
             groundPlane.GetComponent<Renderer>().material.SetTexture("_SplatMap", readRT);
-            
+
             accumKernel = compute.FindKernel("CSAccumulate");
 
             Fill(startLevel);
@@ -50,21 +60,25 @@ namespace SnowStamp
         {
             Restore();
 
-            if (Input.GetKeyDown(KeyCode.Space)) StampCenter(-stepSize);
+            if (Input.GetKeyDown(KeyCode.Space))
+                StampCenter(-stepSize);
 
-            if (Input.GetKeyDown(KeyCode.R)) StampCenter(+stepSize);
+            if (Input.GetKeyDown(KeyCode.R))
+                StampCenter(+stepSize);
 
             Accumulate();
 
             Publish();
         }
-        
+
         private void Accumulate()
         {
             compute.SetTexture(accumKernel, "_SplatMap", splatMap);
             compute.SetTexture(accumKernel, "_SplatRT", splatRT);
             compute.SetFloat("_TexSize", splatMap.width);
             compute.SetFloat("_AccumRate", accumRate);
+            compute.SetVector("_PlanePosition", groundPlane.transform.position);
+            compute.SetVector("_PlaneSize", groundPlane.transform.localScale);
             compute.SetFloat("_MaxHeight", maxHeight);
             var groups = Mathf.CeilToInt(splatMap.width / 8f);
             compute.Dispatch(accumKernel, groups, groups, 1);

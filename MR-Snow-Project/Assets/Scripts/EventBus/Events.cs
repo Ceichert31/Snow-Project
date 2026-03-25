@@ -5,6 +5,6 @@ public interface IEvent { }
 /// </summary>
 public class SettingsEvent : IEvent
 {
-    public int snowSpawnRate;
-    public bool isSnowEnabled;
+    public int snowSpawnRate = 50;
+    public bool isSnowEnabled = true;
 }

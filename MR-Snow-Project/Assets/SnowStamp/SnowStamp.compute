@@ -36,12 +36,56 @@ void CSStamp(uint3 id : SV_DispatchThreadID)
 }
 
 Texture2D<float> _SplatRT;
+SamplerState sampler_SplatRT;
+
 float _AccumRate;
+float3 _PlanePosition;
+float3 _PlaneSize;
 
 [numthreads(8, 8, 1)]
 void CSAccumulate(uint3 id : SV_DispatchThreadID)
 {
-    if (id.x >= (uint)_TexSize || id.y >= (uint)_TexSize) return;
+    if (id.x >= (uint) _TexSize || id.y >= (uint) _TexSize)
+        return;
+    
+    bool hadCollision = _SplatRT.SampleLevel(sampler_SplatRT, id.xy, 0).r > 0;
+    
+    if (!hadCollision)
+    {
+        float2 uv = (float2(id.xy) + 0.5) / _TexSize;
+
+        uint2 splatRes;
+        _SplatRT.GetDimensions(splatRes.x, splatRes.y);
+        uint2 splatCoord = uint2(uv * float2(splatRes));
+
+        float existing = _SplatMap[int2(id.xy)];
+        float incoming = _SplatRT[int2(splatCoord)];
+
+        _SplatMap[int2(id.xy)] = clamp(existing + 0.1 * _AccumRate, 0, _MaxHeight);
+        return;
+    }
+    
+    //Convert from world space to UV space to add vertex height at location
+    //Need point of collision
+    
+    //float2 uvCoord = (id.xy - _PlanePosition.xz / _PlaneSize.xz);
+    
+    //Dividing just by width right now instead of resolution
+    float2 uvCoord = id.xy / _TexSize;
+    float3 worldPosition;
+    
+    //Calculate world position from UV pos
+    worldPosition.x = _PlanePosition.x + (uvCoord.x - 0.5f) * _PlaneSize.x;
+    worldPosition.z = _PlanePosition.z+ (uvCoord.y - 0.5f) * _PlaneSize.z;
+    worldPosition.y = _PlanePosition.y;
+    
+    //Convert back to UV space?
+    float2 localUV = (worldPosition.xz - _PlanePosition.xz) / _PlaneSize.xz;
+    
+    //Need to compare to splat map and see if sampled position is red
+    
+    
+   
     
     float2 uv = (float2(id.xy) + 0.5) / _TexSize;
 
@@ -52,5 +96,5 @@ void CSAccumulate(uint3 id : SV_DispatchThreadID)
     float existing = _SplatMap[int2(id.xy)];
     float incoming = _SplatRT[int2(splatCoord)];
 
-    _SplatMap[int2(id.xy)] = clamp(existing + incoming * _AccumRate, 0, _MaxHeight);
+    _SplatMap[int2(id.xy)] = clamp(existing - incoming * _AccumRate, 0, _MaxHeight);
 }
