@@ -563,6 +563,7 @@ MonoBehaviour:
   stampRadius: 0.1
   splatRT: {fileID: 8400000, guid: 57964e6bc6e3ba245a0d15b55aeef535, type: 2}
   accumRate: 0.05
+  snowAccumulationCRT: {fileID: 8600000, guid: cf4fd0a10aa627548aa4f23f24716f14, type: 2}
 --- !u!4 &2138269934970580550
 Transform:
   m_ObjectHideFlags: 0
