@@ -23,7 +23,9 @@ namespace SnowStamp
         [SerializeField] private RenderTexture splatRT;
         [SerializeField] private float accumRate = 0.05f;
         
-        private int accumKernel;
+        [SerializeField] private CustomRenderTexture snowAccumulationCRT;
+
+        // private int accumKernel;
 
         private RenderTexture readRT;
         private int stampKernel;
@@ -40,7 +42,7 @@ namespace SnowStamp
 
             groundPlane.GetComponent<Renderer>().material.SetTexture("_SplatMap", readRT);
             
-            accumKernel = compute.FindKernel("CSAccumulate");
+            // accumKernel = compute.FindKernel("CSAccumulate");
 
             Fill(startLevel);
             Publish();
@@ -54,21 +56,22 @@ namespace SnowStamp
 
             if (Input.GetKeyDown(KeyCode.R)) StampCenter(+stepSize);
 
-            Accumulate();
+            // Accumulate();
+            Graphics.Blit(snowAccumulationCRT, splatMap);
 
             Publish();
         }
         
-        private void Accumulate()
-        {
-            compute.SetTexture(accumKernel, "_SplatMap", splatMap);
-            compute.SetTexture(accumKernel, "_SplatRT", splatRT);
-            compute.SetFloat("_TexSize", splatMap.width);
-            compute.SetFloat("_AccumRate", accumRate);
-            compute.SetFloat("_MaxHeight", maxHeight);
-            var groups = Mathf.CeilToInt(splatMap.width / 8f);
-            compute.Dispatch(accumKernel, groups, groups, 1);
-        }
+        // private void Accumulate()
+        // {
+        //     compute.SetTexture(accumKernel, "_SplatMap", splatMap);
+        //     compute.SetTexture(accumKernel, "_SplatRT", splatRT);
+        //     compute.SetFloat("_TexSize", splatMap.width);
+        //     compute.SetFloat("_AccumRate", accumRate);
+        //     compute.SetFloat("_MaxHeight", maxHeight);
+        //     var groups = Mathf.CeilToInt(splatMap.width / 8f);
+        //     compute.Dispatch(accumKernel, groups, groups, 1);
+        // }
 
         private void OnDestroy()
         {
