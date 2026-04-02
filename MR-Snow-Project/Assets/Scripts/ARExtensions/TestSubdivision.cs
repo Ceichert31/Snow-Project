@@ -1,15 +1,24 @@
 using System;
+using NaughtyAttributes;
 using NUnit.Framework;
 using UnityEngine;
 
 namespace ARExtensions
 {
+    [ExecuteInEditMode]
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class TestSubdivision : MonoBehaviour
     {
-        [Header("Subdivision Settings")] [SerializeField] [UnityEngine.Range(1, 100)]
+        [Tooltip("How many subdivisions will be performed")]
+        [Header("Subdivision Settings")]
+        [SerializeField]
+        [UnityEngine.Range(1, 100)]
         private int subdivisionCount = 2;
 
+        [Tooltip("The size of the plane")] [SerializeField]
+        private Vector2Int size;
+
+        [HorizontalLine] [Header("Subdivision References")] [SerializeField]
         private MeshFilter meshFilter;
 
         private void Awake()
@@ -20,13 +29,12 @@ namespace ARExtensions
         /// <summary>
         /// Updates newly added or modified planes with a new subdivided mesh
         /// </summary>
+        [Button("Subdivide Mesh")]
         private void UpdatePlaneMesh()
         {
             Assert.IsNotNull(meshFilter);
 
-            var size = gameObject.transform.localScale;
-
-            meshFilter.mesh = CreateSubdividedMesh((int)size.x, (int)size.z, subdivisionCount);
+            meshFilter.mesh = CreateSubdividedMesh(size.x, size.y, subdivisionCount);
         }
 
         /// <summary>
