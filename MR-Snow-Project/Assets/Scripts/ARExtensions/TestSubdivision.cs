@@ -117,14 +117,14 @@ namespace ARExtensions
                     int topRight = topLeft + 1;
 
                     //First triangle
-                    tris[t++] = bottomLeft;
-                    tris[t++] = topLeft;
-                    tris[t++] = bottomRight;
-
-                    //Second triangle
                     tris[t++] = bottomRight;
                     tris[t++] = topLeft;
                     tris[t++] = topRight;
+
+                    //Second triangle
+                    tris[t++] = bottomLeft;
+                    tris[t++] = topLeft;
+                    tris[t++] = bottomRight;
                 }
             }
 
