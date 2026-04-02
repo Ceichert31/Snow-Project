@@ -34,13 +34,26 @@ namespace OrthoSnowSplat
             {
                 snowAccumulationCRT.updateMode = CustomRenderTextureUpdateMode.OnDemand;
             }
+            else
+            {
+                Debug.LogWarning("Snow Accumulation CRT Render Texture Missing!");
+            }
         }
 
         private void Start()
         {
+            if (splatRT == null)
+            {
+                Debug.LogWarning("Splat Render Texture is Missing!");
+            }
+
             if (splatCamera != null)
             {
                 splatCamera.targetTexture = splatRT;
+            }
+            else
+            {
+                Debug.LogWarning("Splat Camera Missing!");
             }
 
             //Update texture and reset update mode
@@ -49,6 +62,10 @@ namespace OrthoSnowSplat
                 snowAccumulationCRT.material.SetTexture(SplatInputID, splatRT);
                 snowAccumulationCRT.Initialize();
                 snowAccumulationCRT.updateMode = CustomRenderTextureUpdateMode.Realtime;
+            }
+            else
+            {
+                Debug.LogWarning("Snow Accumulation CRT material Missing!");
             }
         }
 

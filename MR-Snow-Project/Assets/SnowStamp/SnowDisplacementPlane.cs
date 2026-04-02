@@ -12,7 +12,11 @@ public class SnowDisplacementPlane : MonoBehaviour
 
     private void Start()
     {
-        planeMaterial = GetComponent<Renderer>().material;
+        var render = GetComponent<Renderer>();
+
+        _ = render.sharedMaterial;
+
+        planeMaterial = render.material;
     }
 
     private void Update()

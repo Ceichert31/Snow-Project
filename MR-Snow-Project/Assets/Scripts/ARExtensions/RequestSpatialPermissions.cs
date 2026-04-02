@@ -8,12 +8,12 @@ namespace ARExtensions
     /// </summary>
     public class RequestSpatialPermissions : MonoBehaviour
     {
-        [SerializeField]
-        private UnityEvent OnPermissionGranted;
+        [SerializeField] private UnityEvent OnPermissionGranted;
 
-        [SerializeField]
-        private UnityEvent OnPermissionDenied;
+        [SerializeField] private UnityEvent OnPermissionDenied;
         const string spatialPermission = "com.oculus.permission.USE_SCENE";
+
+        private const float enableDelay = 0.5f;
 
         private void OnEnable()
         {
@@ -46,6 +46,11 @@ namespace ARExtensions
         }
 
         private void OnGranted(string obj)
+        {
+            Invoke(nameof(EnableARPlaneManager), enableDelay);
+        }
+
+        private void EnableARPlaneManager()
         {
             OnPermissionGranted?.Invoke();
         }
