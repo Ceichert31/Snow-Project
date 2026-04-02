@@ -12,8 +12,7 @@ namespace ARExtensions
     [RequireComponent(typeof(ARPlaneManager))]
     public class SubdivideARPlanes : MonoBehaviour
     {
-        [Header("Subdivision Settings")] [SerializeField]
-        [Range(1, 5)]
+        [Header("Subdivision Settings")] [SerializeField] [Range(1, 5)]
         private int subdivisionCount = 2;
 
         /// <remarks>
@@ -25,6 +24,7 @@ namespace ARExtensions
             {
                 UpdatePlaneMesh(plane);
             }
+
             //Maybe switch to async if performance isn't great?
             //Will have to check if Quest can handle parallel processes
             //Parallel.ForEach(ctx.added, UpdatePlaneMesh);
@@ -44,7 +44,7 @@ namespace ARExtensions
             if (meshFilter == null) return;
 
             var size = plane.size;
-            
+
             meshFilter.mesh = CreateSubdividedMesh((int)size.x, (int)size.y, subdivisionCount);
         }
 
@@ -55,11 +55,12 @@ namespace ARExtensions
         private Mesh CreateSubdividedMesh(int sizeX, int sizeY, int subdivisions)
         {
             Mesh mesh = new Mesh();
-            
+
             mesh.name = $"Subdivided Mesh ({subdivisionCount})";
 
             //Initialize an array big enough to hold all vertices data
             Vector3[] verts = new Vector3[((sizeX + 1) * (sizeY + 1))];
+            Vector2[] uvs = new Vector2[verts.Length];
 
             //Create new vertices
             for (int x = 0, i = 0; x < sizeX; x++)
@@ -67,10 +68,11 @@ namespace ARExtensions
                 for (int y = 0; y < sizeY; y++, i++)
                 {
                     verts[i] = new Vector3(x, 0, y);
+                    uvs[i] = new Vector2((float)x / sizeX, (float)y / sizeY);
                 }
             }
-            
-            
+
+
             int[] tris = new int[sizeX * 6];
 
             //Calculate triangles
@@ -84,10 +86,11 @@ namespace ARExtensions
                     tris[i + 5] = j + sizeX + 2;
                 }
             }
-            
+
             mesh.vertices = verts;
             mesh.triangles = tris;
-            
+            mesh.uv = uvs;
+
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
             return mesh;
