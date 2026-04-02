@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
 using NaughtyAttributes;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ARExtensions
@@ -56,7 +53,8 @@ namespace ARExtensions
         [Button("Subdivide Mesh")]
         private void UpdatePlaneMesh()
         {
-            Assert.IsNotNull(meshFilter);
+            if (meshFilter == null)
+                return;
 
             //For debugging subdivision process
             if (stepByStepMode)
