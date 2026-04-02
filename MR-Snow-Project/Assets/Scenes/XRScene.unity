@@ -1829,6 +1829,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 395968673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1827609272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1503257805741102714, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+  m_PrefabInstance: {fileID: 3796449384867581352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1827609281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827609272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864a02e08769a54da1d85ecba19d8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subdivisionCount: 5
 --- !u!1001 &1961456992760430927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2014,6 +2032,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1827609281}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlanesModified
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8367603782605620831, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -2034,9 +2076,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5812857919220163327, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1503257805741102714, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 0}
+      addedObject: {fileID: 1827609281}
   m_SourcePrefab: {fileID: 100100000, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
 --- !u!114 &3796449384867581353 stripped
 MonoBehaviour:
