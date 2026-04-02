@@ -1,7 +1,4 @@
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.XR.ARFoundation;
 
 namespace ARExtensions
@@ -12,7 +9,7 @@ namespace ARExtensions
     [RequireComponent(typeof(ARPlaneManager))]
     public class SubdivideARPlanes : MonoBehaviour
     {
-        [Header("Subdivision Settings")] [SerializeField] [Range(1, 5)]
+        [Header("Subdivision Settings")] [SerializeField] [Range(1, 100)]
         private int subdivisionCount = 2;
 
         /// <remarks>

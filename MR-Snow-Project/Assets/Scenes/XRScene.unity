@@ -1586,7 +1586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5205854343951295496, guid: dc9a5c4a3d30d7444b0158a0515bba57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.986
       objectReference: {fileID: 0}
     - target: {fileID: 5205854343951295496, guid: dc9a5c4a3d30d7444b0158a0515bba57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2136,9 +2136,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1503257805741102714, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1827609281}
-    - targetCorrespondingSourceObject: {fileID: 5812857919220163327, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
 --- !u!114 &3796449384867581353 stripped
 MonoBehaviour:
