@@ -4497,6 +4497,7 @@ GameObject:
   - component: {fileID: 5178145802498951860}
   - component: {fileID: 5777767900184464630}
   - component: {fileID: 1874551859618807957}
+  - component: {fileID: 1816272290445642326}
   m_Layer: 2
   m_Name: XR Origin (XR Rig) Pos based
   m_TagString: Untagged
@@ -4648,7 +4649,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816272290445642326}
+        m_TargetAssemblyTypeName: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+        m_MethodName: OnPlanesModified
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_PlanePrefab: {fileID: 3134517351106532987, guid: c164c206e968d0b479efeb8b3904f397, type: 3}
   m_DetectionMode: 1
 --- !u!114 &1874551859618807957
@@ -4678,6 +4691,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1816272290445642326}
+        m_TargetAssemblyTypeName: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnPermissionDenied:
     m_PersistentCalls:
       m_Calls:
@@ -4693,6 +4718,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1816272290445642326}
+        m_TargetAssemblyTypeName: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1816272290445642326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503257805741102714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864a02e08769a54da1d85ecba19d8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subdivisionCount: 1
 --- !u!1 &1503990121134084273
 GameObject:
   m_ObjectHideFlags: 0

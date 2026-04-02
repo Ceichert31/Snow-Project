@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 namespace ARExtensions
 {
@@ -11,6 +13,8 @@ namespace ARExtensions
     {
         [Header("Subdivision Settings")] [SerializeField] [Range(1, 100)]
         private int subdivisionCount = 2;
+
+        private HashSet<TrackableId> _planesBeingUpdated = new();
 
         /// <remarks>
         /// Invoked by <see cref="ARPlaneManager"/>
@@ -27,7 +31,11 @@ namespace ARExtensions
             //Parallel.ForEach(ctx.added, UpdatePlaneMesh);
             foreach (var plane in ctx.updated)
             {
+                if (_planesBeingUpdated.Contains(plane.trackableId)) continue;
+
+                _planesBeingUpdated.Add(plane.trackableId);
                 UpdatePlaneMesh(plane);
+                _planesBeingUpdated.Remove(plane.trackableId);
             }
         }
 

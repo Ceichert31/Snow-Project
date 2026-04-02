@@ -20,6 +20,12 @@ public class SnowDisplacementPlane : MonoBehaviour
         if (splatMap == null || planeMaterial == null)
             return;
 
+        if (!splatMap.IsCreated())
+        {
+            Debug.LogWarning("SplatMap Render Texture is missing!");
+            return;
+        }
+
         Vector3 scale = transform.lossyScale;
 
         planeMaterial.SetTexture(SplatMapID, splatMap);

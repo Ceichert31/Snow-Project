@@ -5,13 +5,13 @@ namespace OrthoSnowSplat
 {
     public class SplatCaptureTest : MonoBehaviour
     {
-        [Header("Required")]
-        [SerializeField] private Camera splatCamera;
+        [Header("Required")] [SerializeField] private Camera splatCamera;
         [SerializeField] private RenderTexture splatRT;
         [SerializeField] private CustomRenderTexture snowAccumulationCRT;
 
-        [Header("Debug Display")]
-        [SerializeField] private int previewSize = 256;
+        [Header("Debug Display")] [SerializeField]
+        private int previewSize = 256;
+
         [SerializeField] private bool showDebug = true;
 
         private static readonly int IsSplatPassID = Shader.PropertyToID("_IsSplatPass");
@@ -27,22 +27,37 @@ namespace OrthoSnowSplat
             RenderPipelineManager.beginCameraRendering -= OnBeginCamera;
         }
 
+        private void Awake()
+        {
+            //Prevent render texture from auto-dispatching
+            if (snowAccumulationCRT != null)
+            {
+                snowAccumulationCRT.updateMode = CustomRenderTextureUpdateMode.OnDemand;
+            }
+        }
+
         private void Start()
         {
+            if (splatCamera != null)
+            {
+                splatCamera.targetTexture = splatRT;
+            }
+
+            //Update texture and reset update mode
             if (snowAccumulationCRT != null && snowAccumulationCRT.material != null)
             {
                 snowAccumulationCRT.material.SetTexture(SplatInputID, splatRT);
                 snowAccumulationCRT.Initialize();
-            }
-
-            if (splatCamera != null)
-            {
-                splatCamera.targetTexture = splatRT;
+                snowAccumulationCRT.updateMode = CustomRenderTextureUpdateMode.Realtime;
             }
         }
 
         private void OnBeginCamera(ScriptableRenderContext ctx, Camera cam)
         {
+            //Prevent this being called from XR camera
+            if (cam.cameraType == CameraType.Game && cam.stereoEnabled)
+                return;
+
             Shader.SetGlobalFloat(IsSplatPassID, cam == splatCamera ? 1f : 0f);
         }
 
