@@ -45,7 +45,7 @@ namespace ARExtensions
 
             var size = plane.size;
             
-            meshFilter.mesh = CreateSubdividedMesh(size.x, size.y, subdivisionCount);
+            meshFilter.mesh = CreateSubdividedMesh((int)size.x, (int)size.y, subdivisionCount);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace ARExtensions
             //Initialize an array big enough to hold all vertices data
             Vector3[] verts = new Vector3[((sizeX + 1) * (sizeY + 1))];
 
-            //Create new verticies
+            //Create new vertices
             for (int x = 0, i = 0; x < sizeX; x++)
             {
                 for (int y = 0; y < sizeY; y++, i++)
@@ -84,12 +84,13 @@ namespace ARExtensions
                     tris[i + 5] = j + sizeX + 2;
                 }
             }
+            
+            mesh.vertices = verts;
             mesh.triangles = tris;
             
-            
-            
-            
-            return null;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+            return mesh;
         }
     }
 }
