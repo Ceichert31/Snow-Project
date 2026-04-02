@@ -93,7 +93,7 @@ namespace ARExtensions
             //Create new vertices
             for (int x = 0, i = 0; x < vertsPerSide; x++)
             {
-                for (int y = 0; y < sizeY; y++, i++)
+                for (int y = 0; y < vertsPerSide; y++, i++)
                 {
                     float u = (float)x / subdivisions;
                     float v = (float)y / subdivisions;
@@ -125,7 +125,6 @@ namespace ARExtensions
                     tris[t++] = bottomRight;
                     tris[t++] = topLeft;
                     tris[t++] = topRight;
-                    yield return new WaitForSeconds(stepDelay);
                 }
             }
 
@@ -161,7 +160,7 @@ namespace ARExtensions
             //Create new vertices
             for (int x = 0, i = 0; x < vertsPerSide; x++)
             {
-                for (int y = 0; y < sizeY; y++, i++)
+                for (int y = 0; y < vertsPerSide; y++, i++)
                 {
                     float u = (float)x / subdivisions;
                     float v = (float)y / subdivisions;
