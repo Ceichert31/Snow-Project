@@ -176,24 +176,64 @@ PrefabInstance:
       value: XR Origin (XR Rig) Pos based
       objectReference: {fileID: 0}
     - target: {fileID: 1816272290445642326, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816272290445642326, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: subdivisionCount
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 949638269}
     - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 949638269}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3781431837197202962, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,18 +309,44 @@ PrefabInstance:
       objectReference: {fileID: 3134517351106532987, guid: c164c206e968d0b479efeb8b3904f397, type: 3}
     - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 949638269}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlanesModified
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1816272290445642326, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+--- !u!114 &949638269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1816272290445642326, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+  m_PrefabInstance: {fileID: 949638268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864a02e08769a54da1d85ecba19d8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1049030731
 PrefabInstance:
   m_ObjectHideFlags: 0
