@@ -10,7 +10,7 @@ public class SnowDisplacementPlane : MonoBehaviour
     private static readonly int GroundOriginID = Shader.PropertyToID("_GroundOrigin");
     private static readonly int GroundSizeID = Shader.PropertyToID("_GroundSize");
 
-    private void Start()
+    private void Awake()
     {
         var render = GetComponent<Renderer>();
 

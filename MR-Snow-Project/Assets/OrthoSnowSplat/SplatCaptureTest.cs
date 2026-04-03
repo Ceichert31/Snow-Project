@@ -57,7 +57,7 @@ namespace OrthoSnowSplat
             }
 
             //Update texture and reset update mode
-            if (snowAccumulationCRT != null && snowAccumulationCRT.material != null)
+            if (snowAccumulationCRT != null && snowAccumulationCRT.material != null && splatRT != null)
             {
                 snowAccumulationCRT.material.SetTexture(SplatInputID, splatRT);
                 snowAccumulationCRT.Initialize();

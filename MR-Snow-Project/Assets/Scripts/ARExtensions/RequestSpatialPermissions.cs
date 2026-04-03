@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.Events;
+using System.Collections;
+using UnityEngine.XR.ARFoundation;
 
 namespace ARExtensions
 {
@@ -15,6 +18,8 @@ namespace ARExtensions
 
         private const float enableDelay = 0.5f;
 
+        private PermissionCallbacks _callbacks;
+
         private void OnEnable()
         {
             bool hasUserAuthorizedPermission =
@@ -22,32 +27,39 @@ namespace ARExtensions
 
             if (!hasUserAuthorizedPermission)
             {
-                var callbacks = new UnityEngine.Android.PermissionCallbacks();
+                _callbacks = new UnityEngine.Android.PermissionCallbacks();
 
-                callbacks.PermissionGranted += OnGranted;
-                callbacks.PermissionDenied += OnDenied;
+                _callbacks.PermissionGranted += OnGranted;
+                _callbacks.PermissionDenied += OnDenied;
 
                 UnityEngine.Android.Permission.RequestUserPermission(spatialPermission);
+            }
+            else
+            {
+                StartCoroutine(WaitUntilSessionState());
             }
         }
 
         private void OnDisable()
         {
-            bool hasUserAuthorizedPermission =
-                UnityEngine.Android.Permission.HasUserAuthorizedPermission(spatialPermission);
-
-            if (!hasUserAuthorizedPermission)
-            {
-                var callbacks = new UnityEngine.Android.PermissionCallbacks();
-
-                callbacks.PermissionGranted -= OnGranted;
-                callbacks.PermissionDenied -= OnDenied;
-            }
+            _callbacks.PermissionGranted -= OnGranted;
+            _callbacks.PermissionDenied -= OnDenied;
         }
 
         private void OnGranted(string obj)
         {
-            Invoke(nameof(EnableARPlaneManager), enableDelay);
+            //Invoke(nameof(EnableARPlaneManager), enableDelay);
+            StartCoroutine(WaitUntilSessionState());
+        }
+
+        private IEnumerator WaitUntilSessionState()
+        {
+            while (ARSession.state < ARSessionState.SessionTracking)
+                yield return null;
+
+            yield return new WaitForSeconds(0.5f);
+            Debug.Log("Enabling Plane Manager!");
+            OnPermissionGranted?.Invoke();
         }
 
         private void EnableARPlaneManager()
