@@ -42,6 +42,8 @@ namespace ARExtensions
 
         private void OnDisable()
         {
+            if (UnityEngine.Android.Permission.HasUserAuthorizedPermission(spatialPermission)) return;
+
             _callbacks.PermissionGranted -= OnGranted;
             _callbacks.PermissionDenied -= OnDenied;
         }
