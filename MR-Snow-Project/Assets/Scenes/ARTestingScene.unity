@@ -127,10 +127,78 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 342263943364836653, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342263943364836653, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342263943364836653, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342263943364836653, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342263943364836653, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342263943364836653, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1266878843400054540, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
       propertyPath: headTransform
       value: 
       objectReference: {fileID: 949638275}
+    - target: {fileID: 1452775062375239565, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452775062375239565, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452775062375239565, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452775062375239565, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452775062375239565, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986788767962189362, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986788767962189362, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986788767962189362, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986788767962189362, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986788767962189362, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986788767962189362, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5938956190094543044, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
       propertyPath: m_Camera
       value: 
@@ -199,6 +267,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3713f83d93c2fb9439c0df00d336bc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114013409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4262937281084195012, guid: 8da0ac05fcff41c4da9b433ad2d65627, type: 3}
+  m_PrefabInstance: {fileID: 114013401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &949638268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +333,18 @@ PrefabInstance:
     - target: {fileID: 1503257805741102714, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig) Pos based
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028353382743117613, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_Background
+      value: 
+      objectReference: {fileID: 114013409}
+    - target: {fileID: 3028353382743117613, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_HandShapeOrPose
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b5bfc4e711f9049b4ad03ade500a21, type: 2}
+    - target: {fileID: 3028353382743117613, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_TargetTransform
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3028353382743117613, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -342,6 +433,18 @@ PrefabInstance:
     - target: {fileID: 4824267887318190641, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936158114515579567, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_Background
+      value: 
+      objectReference: {fileID: 114013409}
+    - target: {fileID: 8936158114515579567, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_HandShapeOrPose
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b5bfc4e711f9049b4ad03ade500a21, type: 2}
+    - target: {fileID: 8936158114515579567, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_TargetTransform
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8936158114515579567, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
