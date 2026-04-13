@@ -2954,9 +2954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8b3d492958c2a42bd53270cb5e263a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRateSlider: {fileID: 292052745999096891}
-  windRateSlider: {fileID: 4809017477282190747}
-  snowEnabledToggle: {fileID: 2933120916966718337}
 --- !u!1 &7705964895500137479
 GameObject:
   m_ObjectHideFlags: 0

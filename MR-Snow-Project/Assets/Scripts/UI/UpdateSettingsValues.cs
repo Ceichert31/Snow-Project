@@ -1,33 +1,10 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-
+/// <summary>
+/// Used by settings UI to control VFX values
+/// </summary>
 public class UpdateSettingsValues : MonoBehaviour
 {
-    [Header("UI References")] [SerializeField]
-    private Slider spawnRateSlider;
-
-    [SerializeField] private Slider windRateSlider;
-
-    [SerializeField] private Toggle snowEnabledToggle;
-
-    private SettingsEvent settingsEvent = new();
-
-    private void OnEnable()
-    {
-        spawnRateSlider.onValueChanged.AddListener(UpdateSpawnRate);
-        windRateSlider.onValueChanged.AddListener(UpdateWindRate);
-        snowEnabledToggle.onValueChanged.AddListener(UpdateSnowToggle);
-    }
-
-    private void OnDisable()
-    {
-        spawnRateSlider.onValueChanged.RemoveListener(UpdateSpawnRate);
-        windRateSlider.onValueChanged.RemoveListener(UpdateWindRate);
-        snowEnabledToggle.onValueChanged.RemoveListener(UpdateSnowToggle);
-    }
-
     /// <summary>
     /// Called by slider
     /// </summary>
@@ -50,5 +27,13 @@ public class UpdateSettingsValues : MonoBehaviour
     public void UpdateWindRate(float windRate)
     {
         SettingsManager.Instance.WindForce = windRate;
+    }
+
+    /// <summary>
+    /// Called by button
+    /// </summary>
+    public void SpawnCube()
+    {
+        //Call event to spawn cube in front of player
     }
 }

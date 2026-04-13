@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Controls all the VFX and snow settings
@@ -8,6 +9,8 @@ using UnityEngine.Events;
 public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager Instance;
+
+    [HideInInspector] public UnityEvent onPropertyChanged;
 
     #region Properties
 
@@ -20,7 +23,7 @@ public class SettingsManager : MonoBehaviour
         set
         {
             _spawnRate = value;
-            OnPropertyChanged?.Invoke();
+            onPropertyChanged?.Invoke();
         }
     }
 
@@ -35,7 +38,7 @@ public class SettingsManager : MonoBehaviour
         set
         {
             _isSnowEnabled = value;
-            OnPropertyChanged?.Invoke();
+            onPropertyChanged?.Invoke();
         }
     }
 
@@ -53,17 +56,13 @@ public class SettingsManager : MonoBehaviour
         set
         {
             _windForce = value;
-            OnPropertyChanged?.Invoke();
+            onPropertyChanged?.Invoke();
         }
     }
 
     private float _windForce = 1;
 
     #endregion
-
-
-    public UnityEvent OnPropertyChanged;
-
 
     private void Awake()
     {
