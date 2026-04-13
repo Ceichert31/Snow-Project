@@ -1589,7 +1589,7 @@
     "m_ObjectId": "3f89dc3add284f398394204df9e251cd",
     "m_Title": "Planar Projection",
     "m_Position": {
-        "x": 236.66683959960938,
+        "x": 236.6666259765625,
         "y": 450.6666259765625
     }
 }
@@ -2795,7 +2795,7 @@
     "m_ObjectId": "9e23a6ae6edf409eada6f0bec3413011",
     "m_Title": "Planar Projection",
     "m_Position": {
-        "x": -1663.9998779296875,
+        "x": -1664.0,
         "y": -891.9999389648438
     }
 }
