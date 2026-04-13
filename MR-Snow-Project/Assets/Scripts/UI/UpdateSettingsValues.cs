@@ -35,5 +35,6 @@ public class UpdateSettingsValues : MonoBehaviour
     public void SpawnCube()
     {
         //Call event to spawn cube in front of player
+        EventBus<SpawnCubeEvent>.Raise(new SpawnCubeEvent());
     }
 }
