@@ -28,21 +28,27 @@ public class UpdateSettingsValues : MonoBehaviour
         snowEnabledToggle.onValueChanged.RemoveListener(UpdateSnowToggle);
     }
 
-    private void UpdateSpawnRate(float spawnRate)
+    /// <summary>
+    /// Called by slider
+    /// </summary>
+    public void UpdateSpawnRate(float spawnRate)
     {
-        settingsEvent.snowSpawnRate = (int)spawnRate;
-        EventBus<SettingsEvent>.Raise(settingsEvent);
+        SettingsManager.Instance.SpawnRate = spawnRate;
     }
 
-    private void UpdateSnowToggle(bool isEnabled)
+    /// <summary>
+    /// Called by toggle button
+    /// </summary>
+    public void UpdateSnowToggle(bool isEnabled)
     {
-        settingsEvent.isSnowEnabled = isEnabled;
-        EventBus<SettingsEvent>.Raise(settingsEvent);
+        SettingsManager.Instance.IsSnowEnabled = isEnabled;
     }
 
-    private void UpdateWindRate(float windRate)
+    /// <summary>
+    /// Called by slider
+    /// </summary>
+    public void UpdateWindRate(float windRate)
     {
-        settingsEvent.windRate = (int)windRate;
-        EventBus<SettingsEvent>.Raise(settingsEvent);
+        SettingsManager.Instance.WindForce = windRate;
     }
 }

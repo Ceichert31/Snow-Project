@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRateSlider: {fileID: 292052745953716450}
-  windRateSlider: {fileID: 0}
+  windRateSlider: {fileID: 504246933}
   snowEnabledToggle: {fileID: 2933120917013401432}
 --- !u!1 &3517774404140035353
 GameObject:
