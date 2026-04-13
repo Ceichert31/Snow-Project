@@ -1,31 +1,32 @@
+using System;
 using UnityEngine;
 using UnityEngine.VFX;
 
+/// <summary>
+/// Controls VFX settings
+/// </summary>
 public class UpdateVFXValues : MonoBehaviour
 {
     private VisualEffect snowEffect;
-
-    private EventBinding<SettingsEvent> settingsBinding;
-
-    private void OnEnable()
-    {
-        settingsBinding = new(UpdateValues);
-        EventBus<SettingsEvent>.Register(settingsBinding);
-    }
-
-    private void OnDisable()
-    {
-        EventBus<SettingsEvent>.Deregister(settingsBinding);
-    }
 
     private void Awake()
     {
         snowEffect = GetComponent<VisualEffect>();
     }
 
-    private void UpdateValues(SettingsEvent ctx)
+    private void OnEnable()
     {
-        snowEffect.enabled = ctx.isSnowEnabled;
-        snowEffect.SetInt("SnowSpawnRate", ctx.snowSpawnRate);
+        SettingsManager.Instance.onPropertyChanged += UpdateValues;
+    }
+
+    /// <summary>
+    /// Updates all settings values
+    /// </summary>
+    private void UpdateValues()
+    {
+        snowEffect.SetInt("SnowSpawnRate", SettingsManager.Instance.SpawnRate);
+        snowEffect.SetInt("WindRate", SettingsManager.Instance.WindForce);
+
+        snowEffect.enabled = SettingsManager.Instance.IsSnowEnabled;
     }
 }

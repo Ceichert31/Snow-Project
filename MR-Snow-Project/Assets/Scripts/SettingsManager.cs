@@ -10,14 +10,14 @@ public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager Instance;
 
-    [HideInInspector] public UnityEvent onPropertyChanged;
+    [HideInInspector] public UnityAction onPropertyChanged;
 
     #region Properties
 
     /// <summary>
     /// Rate at which snow spawns
     /// </summary>
-    public float SpawnRate
+    public int SpawnRate
     {
         get => _spawnRate;
         set
@@ -27,7 +27,7 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private float _spawnRate = 100;
+    private int _spawnRate = 100;
 
     /// <summary>
     /// Whether snow VFX is enabled
@@ -50,7 +50,7 @@ public class SettingsManager : MonoBehaviour
     /// <remarks>
     /// Could add a particle that goes along with this
     /// </remarks>
-    public float WindForce
+    public int WindForce
     {
         get => _windForce;
         set
@@ -60,7 +60,7 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private float _windForce = 1;
+    private int _windForce = 1;
 
     #endregion
 

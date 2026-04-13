@@ -10,7 +10,7 @@ public class UpdateSettingsValues : MonoBehaviour
     /// </summary>
     public void UpdateSpawnRate(float spawnRate)
     {
-        SettingsManager.Instance.SpawnRate = spawnRate;
+        SettingsManager.Instance.SpawnRate = (int)spawnRate;
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ public class UpdateSettingsValues : MonoBehaviour
     /// </summary>
     public void UpdateWindRate(float windRate)
     {
-        SettingsManager.Instance.WindForce = windRate;
+        SettingsManager.Instance.WindForce = (int)windRate;
     }
 
     /// <summary>
