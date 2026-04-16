@@ -175,6 +175,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (XR Rig) Pos based
       objectReference: {fileID: 0}
+    - target: {fileID: 2416635419470387004, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_EnvironmentDepthMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416635419470387004, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_HumanSegmentationDepthMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416635419470387004, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_HumanSegmentationStencilMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3028353382743117613, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_Background
       value: 
