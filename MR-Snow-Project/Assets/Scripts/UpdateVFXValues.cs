@@ -19,6 +19,11 @@ public class UpdateVFXValues : MonoBehaviour
         SettingsManager.Instance.OnPropertyChanged += UpdateValues;
     }
 
+    void OnDisable()
+    {
+        SettingsManager.Instance.OnPropertyChanged -= UpdateValues;
+    }
+
     /// <summary>
     /// Updates all settings values
     /// </summary>
