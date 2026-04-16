@@ -1,15 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles all method calls for button interactions
 /// </summary>
 public class ButtonLogic : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject settingsMenu;
+    [SerializeField] private GameObject settingsMenu;
 
-    [SerializeField]
-    private GameObject mainMenu;
+    [SerializeField] private GameObject mainMenu;
 
     public void Quit()
     {
@@ -27,5 +26,10 @@ public class ButtonLogic : MonoBehaviour
     {
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadSceneAsync(1);
     }
 }

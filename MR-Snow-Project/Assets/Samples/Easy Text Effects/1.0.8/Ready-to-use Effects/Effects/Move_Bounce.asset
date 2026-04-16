@@ -15,7 +15,7 @@ MonoBehaviour:
   effectTag: bounce
   startCharIndex: 0
   charLength: 132
-  animationType: 0
+  animationType: 3
   fixedDuration: 0
   durationPerChar: 2
   timeBetweenChars: 0.1
