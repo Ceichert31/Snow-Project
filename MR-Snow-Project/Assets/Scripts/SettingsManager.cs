@@ -10,7 +10,7 @@ public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager Instance;
 
-    [HideInInspector] public UnityAction onPropertyChanged;
+    [HideInInspector] public UnityAction OnPropertyChanged;
 
     #region Properties
 
@@ -23,7 +23,7 @@ public class SettingsManager : MonoBehaviour
         set
         {
             _spawnRate = value;
-            onPropertyChanged?.Invoke();
+            OnPropertyChanged?.Invoke();
         }
     }
 
@@ -38,7 +38,7 @@ public class SettingsManager : MonoBehaviour
         set
         {
             _isSnowEnabled = value;
-            onPropertyChanged?.Invoke();
+            OnPropertyChanged?.Invoke();
         }
     }
 
@@ -56,7 +56,7 @@ public class SettingsManager : MonoBehaviour
         set
         {
             _windForce = value;
-            onPropertyChanged?.Invoke();
+            OnPropertyChanged?.Invoke();
         }
     }
 

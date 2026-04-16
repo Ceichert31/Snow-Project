@@ -16,7 +16,7 @@ public class UpdateVFXValues : MonoBehaviour
 
     private void OnEnable()
     {
-        SettingsManager.Instance.onPropertyChanged += UpdateValues;
+        SettingsManager.Instance.OnPropertyChanged += UpdateValues;
     }
 
     /// <summary>
