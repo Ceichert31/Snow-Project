@@ -2,6 +2,7 @@
 
 #pragma hull hull
 #pragma domain domain
+#pragma require tessellation tessHW
 
 void ForceTess_float(in float2 UV, in float3 WorldPos, in float3 WorldNormal, out float Output)
 {

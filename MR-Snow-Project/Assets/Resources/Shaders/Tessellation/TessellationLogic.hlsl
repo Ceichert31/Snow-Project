@@ -75,8 +75,12 @@ PackedVaryings domain(TessellationFactors factors, OutputPatch<PackedVaryings, 3
 
     INTERPOLATE(positionWS)
     INTERPOLATE(positionCS)
+
+    /*#ifndef UNITY_PASS_SHADOWCASTER
     INTERPOLATE(normalWS)
     INTERPOLATE(texCoord0)
+    INTERPOLATE(tangentWS)
+    #endif*/
 
     vert(data);
     return data;
