@@ -50,7 +50,15 @@ namespace ARExtensions
 
             var size = plane.size;
 
-            meshFilter.mesh = CreateSubdividedMesh((int)size.x, (int)size.y, subdivisionCount);
+            if (size.x == 0 || size.y == 0) return;
+
+            //float is being rounded down to zero!
+            meshFilter.mesh =
+                CreateSubdividedMesh(Mathf.RoundToInt(size.x), Mathf.RoundToInt(size.y), subdivisionCount);
+            if (meshFilter.mesh.bounds.size.x == 0 || meshFilter.mesh.bounds.size.y == 0)
+            {
+                Debug.LogError("Subdivided mesh size is 0!");
+            }
         }
 
         /// <summary>
@@ -115,6 +123,7 @@ namespace ARExtensions
 
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
+
             return mesh;
         }
     }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1460388063541585697}
   - component: {fileID: 9145662142356638156}
   - component: {fileID: -4032314026984234001}
+  - component: {fileID: 5716051360726031127}
   m_Layer: 0
   m_Name: AR Snow Plane
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TrackingStateVisibilityThreshold: 1
-  m_HideSubsumed: 0
+  m_HideSubsumed: 1
 --- !u!64 &5833685366148511283
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -261,3 +262,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splatMap: {fileID: 8600000, guid: cf4fd0a10aa627548aa4f23f24716f14, type: 2}
+--- !u!114 &5716051360726031127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134517351106532987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0734f9e27efc34cb9553ef4e3ff6c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
