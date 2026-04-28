@@ -5,6 +5,12 @@
     "m_Properties": [
         {
             "m_Id": "616c94ae86484ec19d9728984e8056b6"
+        },
+        {
+            "m_Id": "4becbf84f9f446d8b6b1eb525cb53fc7"
+        },
+        {
+            "m_Id": "631b2f488315443986b072e38ec5c7a8"
         }
     ],
     "m_Keywords": [],
@@ -585,6 +591,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "4becbf84f9f446d8b6b1eb525cb53fc7",
+    "m_Guid": {
+        "m_GuidSerialized": "72aa5aed-8d21-4288-925d-d3b4a6c39afe"
+    },
+    "m_Name": "Tessellation",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Tessellation",
+    "m_DefaultReferenceName": "_Tessellation",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "4cb825a10ef44b768f35599a1122086c",
@@ -728,6 +762,34 @@
     },
     "isMainColor": false,
     "m_ColorMode": 0
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "631b2f488315443986b072e38ec5c7a8",
+    "m_Guid": {
+        "m_GuidSerialized": "4a18e539-17d7-47eb-8533-0e11f3aed21a"
+    },
+    "m_Name": "MaxTessellationDist",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "MaxTessellationDist",
+    "m_DefaultReferenceName": "_MaxTessellationDist",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -1203,6 +1265,12 @@
     "m_ChildObjectList": [
         {
             "m_Id": "616c94ae86484ec19d9728984e8056b6"
+        },
+        {
+            "m_Id": "4becbf84f9f446d8b6b1eb525cb53fc7"
+        },
+        {
+            "m_Id": "631b2f488315443986b072e38ec5c7a8"
         }
     ]
 }
