@@ -127,7 +127,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Tessellation: 15
+    - _Tessellation: 35
     - _VisibilityThreshold: 0.5
     - _WorkflowMode: 1
     - _ZWrite: 1

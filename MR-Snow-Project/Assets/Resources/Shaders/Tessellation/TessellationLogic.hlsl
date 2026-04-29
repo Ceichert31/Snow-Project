@@ -1,15 +1,17 @@
-struct TessellationFactors
+///Contains data needed for 
+///each triangle for tessellation 
+struct TessellationData
 {
-    float edge[3] : SV_TessFactor;
-    float inside : SV_InsideTessFactor;
+    float triangleEdge[3] : SV_TessFactor;
+    float triangleCenter : SV_InsideTessFactor;
 };
 
-[patchconstantfunc("patchConstantFunction")]
-
+//Run hull stage on triangles
 [domain("tri")]
 [outputcontrolpoints(3)]
 [outputtopology("triangle_cw")]
 [partitioning("fractional_odd")]
+[patchconstantfunc("PatchConstantFunction")]
 PackedVaryings hull(InputPatch<PackedVaryings, 3> patch, uint id : SV_OutputControlPointID)
 {
     return patch[id];
@@ -18,25 +20,25 @@ PackedVaryings hull(InputPatch<PackedVaryings, 3> patch, uint id : SV_OutputCont
 float CalcDistanceTessFactor(float3 worldPosition)
 {
     const float minDist = 2;
-    float dist = distance(worldPosition, _WorldSpaceCameraPos);
+    float dist = distance(worldPosition, _WorldSpaceCameraPos.xyz);
     float factor = clamp(1 - (dist - minDist) / (_MaxTessellationDist - minDist), 0.01, 1);
 
     return clamp(factor * _Tessellation, 0, _Tessellation);
 }
 
-TessellationFactors CalcTriEdgeTessFactors(float3 vertexTessFactors)
+TessellationData CalcTriEdgeTessFactors(float3 vertexTessFactors)
 {
-    TessellationFactors tess;
+    TessellationData tess;
 
-    tess.edge[0] = 0.5 * (vertexTessFactors.y + vertexTessFactors.z);
-    tess.edge[1] = 0.5 * (vertexTessFactors.x + vertexTessFactors.z);
-    tess.edge[2] = 0.5 * (vertexTessFactors.x + vertexTessFactors.y);
-    tess.inside = (vertexTessFactors.x + vertexTessFactors.y + vertexTessFactors.z) / 3.0f;
+    tess.triangleEdge[0] = 0.5 * (vertexTessFactors.y + vertexTessFactors.z);
+    tess.triangleEdge[1] = 0.5 * (vertexTessFactors.x + vertexTessFactors.z);
+    tess.triangleEdge[2] = 0.5 * (vertexTessFactors.x + vertexTessFactors.y);
+    tess.triangleCenter = (vertexTessFactors.x + vertexTessFactors.y + vertexTessFactors.z) / 3.0f;
 
     return tess;
 }
 
-TessellationFactors DistanceBasedTess(PackedVaryings vertex0, PackedVaryings vertex1, PackedVaryings vertex2)
+TessellationData DistanceBasedTess(PackedVaryings vertex0, PackedVaryings vertex1, PackedVaryings vertex2)
 {
     float3 vertexTessFactors;
 
@@ -47,16 +49,16 @@ TessellationFactors DistanceBasedTess(PackedVaryings vertex0, PackedVaryings ver
     return CalcTriEdgeTessFactors(vertexTessFactors);
 }
 
-TessellationFactors patchConstantFunction(InputPatch<PackedVaryings, 3> patch)
+TessellationData PatchConstantFunction(InputPatch<PackedVaryings, 3> patch)
 {
     return DistanceBasedTess(patch[0], patch[1], patch[2]);
 }
 
 void vert(inout PackedVaryings IN)
 {
-    //float4 heightMap = SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, IN.texCoord0, 0);
-
-    //IN.positionWS.xyz += IN.normalWS;
+    //No vertex logic needs to execute here
+    float3 posInObjectSpace = TransformWorldToObject(IN.positionWS);
+    IN.positionCS = TransformObjectToHClip(posInObjectSpace);
 }
 
 #define INTERPOLATE(fieldName) data.fieldName = \
@@ -65,7 +67,7 @@ void vert(inout PackedVaryings IN)
 		        patch[2].fieldName * barycentricCoordinates.z;
 
 [domain("tri")]
-PackedVaryings domain(TessellationFactors factors, OutputPatch<PackedVaryings, 3> patch,
+PackedVaryings domain(TessellationData factors, OutputPatch<PackedVaryings, 3> patch,
                       float3 barycentricCoordinates : SV_DomainLocation)
 {
     PackedVaryings data;
