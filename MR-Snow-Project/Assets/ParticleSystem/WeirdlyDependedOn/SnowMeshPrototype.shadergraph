@@ -654,6 +654,20 @@
             },
             "m_InputSlot": {
                 "m_Node": {
+                    "m_Id": "85aafd732bc349d18fc92658d7cbe183"
+                },
+                "m_SlotId": 4
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "eed2a0def5364c37a7163facc57aa3d9"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
                     "m_Id": "efbe175949fa4be683f4017a5fbc37cc"
                 },
                 "m_SlotId": 0
@@ -1672,7 +1686,7 @@
     "m_ObjectId": "3f89dc3add284f398394204df9e251cd",
     "m_Title": "Planar Projection",
     "m_Position": {
-        "x": 236.66650390625,
+        "x": 236.6668701171875,
         "y": 450.6666259765625
     }
 }
@@ -1982,8 +1996,8 @@
     "m_ObjectId": "48ff6b7b87d54d04b809d884717a7f4f",
     "m_Title": "Snow Material",
     "m_Position": {
-        "x": 245.99996948242188,
-        "y": -183.33334350585938
+        "x": 246.0001220703125,
+        "y": -183.33331298828126
     }
 }
 
@@ -2936,6 +2950,9 @@
     },
     "m_Slots": [
         {
+            "m_Id": "cad306fd4eba41c2a5fa4b69f3400f30"
+        },
+        {
             "m_Id": "602f85dc538e43baacd0757ff6b920e7"
         },
         {
@@ -3181,7 +3198,7 @@
     "m_ObjectId": "9e23a6ae6edf409eada6f0bec3413011",
     "m_Title": "Planar Projection",
     "m_Position": {
-        "x": -2128.66650390625,
+        "x": -2128.666748046875,
         "y": -900.6666870117188
     }
 }
@@ -3901,6 +3918,31 @@
         "e32": 0.0,
         "e33": 1.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "cad306fd4eba41c2a5fa4b69f3400f30",
+    "m_Id": 4,
+    "m_DisplayName": "VertexColor",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "VertexColor",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -5316,7 +5358,7 @@
     "m_Title": "Displace Along Normal",
     "m_Position": {
         "x": -138.666748046875,
-        "y": -1250.666748046875
+        "y": -1250.6666259765625
     }
 }
 

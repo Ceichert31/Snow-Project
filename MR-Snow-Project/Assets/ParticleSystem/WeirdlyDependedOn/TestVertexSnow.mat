@@ -112,7 +112,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _MaxTessellationDist: 15
+    - _MaxTessellationDist: 30
     - _Metallic: 0
     - _NoiseScale: 0
     - _OcclusionStrength: 1
@@ -127,7 +127,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Tessellation: 35
+    - _Tessellation: 125
     - _VisibilityThreshold: 0.5
     - _WorkflowMode: 1
     - _ZWrite: 1
