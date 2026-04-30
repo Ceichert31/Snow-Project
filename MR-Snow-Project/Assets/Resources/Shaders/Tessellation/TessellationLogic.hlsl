@@ -1,3 +1,12 @@
+#if defined(SHADER_API_D3D11) || defined(SHADER_API_GLES3) || defined(SHADER_API_GLCORE) || defined(SHADER_API_VULKAN) || defined(SHADER_API_METAL) || defined(SHADER_API_PSSL)
+#define UNITY_CAN_COMPILE_TESSELLATION 1
+#   define UNITY_domain                 domain
+#   define UNITY_partitioning           partitioning
+#   define UNITY_outputtopology         outputtopology
+#   define UNITY_patchconstantfunc      patchconstantfunc
+#   define UNITY_outputcontrolpoints    outputcontrolpoints
+#endif
+
 ///Contains data needed for 
 ///each triangle for tessellation 
 struct TessellationData
@@ -58,7 +67,13 @@ void vert(inout PackedVaryings IN)
 {
     //No vertex logic needs to execute here
     float3 posInObjectSpace = TransformWorldToObject(IN.positionWS);
+    #if (SHADERPASS == SHADERPASS_SHADOWCASTER)
+    // object to clipspace, this doesnt take into account the adjustments for some reason
     IN.positionCS = TransformObjectToHClip(posInObjectSpace);
+    #else
+    // object to clipspace
+    IN.positionCS = TransformObjectToHClip(posInObjectSpace);
+    #endif
 }
 
 #define INTERPOLATE(fieldName) data.fieldName = \
@@ -74,15 +89,11 @@ PackedVaryings domain(TessellationData factors, OutputPatch<PackedVaryings, 3> p
     //Sets all data points equal to zero
     ZERO_INITIALIZE(PackedVaryings, data);
 
-
     INTERPOLATE(positionWS)
     INTERPOLATE(positionCS)
-
-    /*#ifndef UNITY_PASS_SHADOWCASTER
     INTERPOLATE(normalWS)
     INTERPOLATE(texCoord0)
-    INTERPOLATE(tangentWS)
-    #endif*/
+    INTERPOLATE(color)
 
     vert(data);
     return data;

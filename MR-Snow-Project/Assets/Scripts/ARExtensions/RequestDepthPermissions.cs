@@ -1,27 +1,24 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.Events;
-using System.Collections;
 using UnityEngine.XR.ARFoundation;
 
 namespace ARExtensions
 {
-    /// <summary>
-    /// Requests spatial data from user, if denied just generate a large plane as the ground plane
-    /// </summary>
-    public class RequestSpatialPermissions : MonoBehaviour
+    public class RequestDepthPermissions : MonoBehaviour
     {
         [SerializeField] private UnityEvent OnPermissionGranted;
 
         [SerializeField] private UnityEvent OnPermissionDenied;
-        const string spatialPermission = "com.oculus.permission.USE_SCENE";
+        const string DepthPermission = "android.permission.SCENE_UNDERSTANDING_FINE";
 
         private PermissionCallbacks _callbacks;
 
         private void OnEnable()
         {
             bool hasUserAuthorizedPermission =
-                UnityEngine.Android.Permission.HasUserAuthorizedPermission(spatialPermission);
+                UnityEngine.Android.Permission.HasUserAuthorizedPermission(DepthPermission);
 
             if (!hasUserAuthorizedPermission)
             {
@@ -30,7 +27,7 @@ namespace ARExtensions
                 _callbacks.PermissionGranted += OnGranted;
                 _callbacks.PermissionDenied += OnDenied;
 
-                UnityEngine.Android.Permission.RequestUserPermission(spatialPermission);
+                UnityEngine.Android.Permission.RequestUserPermission(DepthPermission);
             }
             else
             {
@@ -40,7 +37,7 @@ namespace ARExtensions
 
         private void OnDisable()
         {
-            if (UnityEngine.Android.Permission.HasUserAuthorizedPermission(spatialPermission)) return;
+            if (UnityEngine.Android.Permission.HasUserAuthorizedPermission(DepthPermission)) return;
 
             _callbacks.PermissionGranted -= OnGranted;
             _callbacks.PermissionDenied -= OnDenied;
@@ -57,7 +54,7 @@ namespace ARExtensions
                 yield return null;
 
             yield return new WaitForSeconds(0.5f);
-            Debug.Log("Enabling Plane Manager!");
+            Debug.Log("Enabling Occlussion Manager!");
             OnPermissionGranted?.Invoke();
         }
 

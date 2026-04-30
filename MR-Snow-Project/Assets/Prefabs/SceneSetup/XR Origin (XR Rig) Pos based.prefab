@@ -3833,7 +3833,8 @@ GameObject:
   - component: {fileID: 5178145802498951860}
   - component: {fileID: 5777767900184464630}
   - component: {fileID: 1874551859618807957}
-  - component: {fileID: 1816272290445642326}
+  - component: {fileID: 5124029000405247773}
+  - component: {fileID: 7176134182765273956}
   m_Layer: 2
   m_Name: XR Origin (XR Rig) Pos based
   m_TagString: Untagged
@@ -3874,7 +3875,7 @@ MonoBehaviour:
   m_Camera: {fileID: 6175683307032369068}
   m_OriginBaseGameObject: {fileID: 1503257805741102714}
   m_CameraFloorOffsetObject: {fileID: 3575659533210534667}
-  m_RequestedTrackingOriginMode: 2
+  m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 1.36144
 --- !u!143 &4369613994119872550
 CharacterController:
@@ -3985,20 +3986,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1816272290445642326}
-        m_TargetAssemblyTypeName: ARExtensions.SubdivideARPlanes, Assembly-CSharp
-        m_MethodName: OnPlanesModified
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_PlanePrefab: {fileID: 3134517351106532987, guid: c164c206e968d0b479efeb8b3904f397, type: 3}
+      m_Calls: []
+  m_PlanePrefab: {fileID: 7269310112191178721, guid: a65b710e3d21d9d488ef05c0cdddc4fd, type: 3}
   m_DetectionMode: 1
 --- !u!114 &1874551859618807957
 MonoBehaviour:
@@ -4027,7 +4016,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1816272290445642326}
+      - m_Target: {fileID: 7176134182765273956}
         m_TargetAssemblyTypeName: ARExtensions.SubdivideARPlanes, Assembly-CSharp
         m_MethodName: set_enabled
         m_Mode: 6
@@ -4054,7 +4043,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1816272290445642326}
+      - m_Target: {fileID: 7176134182765273956}
         m_TargetAssemblyTypeName: ARExtensions.SubdivideARPlanes, Assembly-CSharp
         m_MethodName: set_enabled
         m_Mode: 6
@@ -4066,19 +4055,89 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1816272290445642326
+--- !u!114 &5124029000405247773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503257805741102714}
-  m_Enabled: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c45071c98dfb83459f95fa1bbd4ea48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPermissionGranted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2416635419470387004}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.AROcclusionManager,
+          Unity.XR.ARFoundation
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2542360522922150239}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.ARShaderOcclusion,
+          Unity.XR.ARFoundation
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnPermissionDenied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2416635419470387004}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.AROcclusionManager,
+          Unity.XR.ARFoundation
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2542360522922150239}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.ARShaderOcclusion,
+          Unity.XR.ARFoundation
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7176134182765273956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503257805741102714}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7864a02e08769a54da1d85ecba19d8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subdivisionCount: 60
+  subdivisionCount: 50
 --- !u!1 &1543827226071635390
 GameObject:
   m_ObjectHideFlags: 0
@@ -14210,6 +14269,7 @@ GameObject:
   - component: {fileID: 5526224655373827789}
   - component: {fileID: 4405940629680555113}
   - component: {fileID: 2416635419470387004}
+  - component: {fileID: 2542360522922150239}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14465,7 +14525,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5812857919220163327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 816b289ef451e094f9ae174fb4cf8db0, type: 3}
   m_Name: 
@@ -14484,11 +14544,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15f82cc229284894964d2d30806969d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HumanSegmentationStencilMode: 0
-  m_HumanSegmentationDepthMode: 0
-  m_EnvironmentDepthMode: 3
+  m_HumanSegmentationStencilMode: 2
+  m_HumanSegmentationDepthMode: 2
+  m_EnvironmentDepthMode: 2
   m_EnvironmentDepthTemporalSmoothing: 1
-  m_OcclusionPreferenceMode: 0
+  m_OcclusionPreferenceMode: 1
+--- !u!114 &2542360522922150239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812857919220163327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be8fb9835084b3f83d6d0ae1c6bd876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OcclusionManager: {fileID: 2416635419470387004}
+  m_OcclusionShaderMode: 1
+  m_SoftOcclusionPreprocessShader: {fileID: 0}
+  m_AROcclusionSources: 1
+  m_HandsOcclusionMaterial: {fileID: 0}
 --- !u!1 &5817508133906074254
 GameObject:
   m_ObjectHideFlags: 0
