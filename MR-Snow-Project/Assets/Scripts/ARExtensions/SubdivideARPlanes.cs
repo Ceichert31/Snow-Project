@@ -52,26 +52,20 @@ namespace ARExtensions
 
             if (size.x == 0 || size.y == 0) return;
 
-            //float is being rounded down to zero!
-            meshFilter.mesh =
-                CreateSubdividedMesh(Mathf.RoundToInt(size.x), Mathf.RoundToInt(size.y), subdivisionCount);
-            if (meshFilter.mesh.bounds.size.x == 0 || meshFilter.mesh.bounds.size.y == 0)
-            {
-                Debug.LogError("Subdivided mesh size is 0!");
-            }
+            meshFilter.mesh = CreateSubdividedMesh(size.x, size.y, subdivisionCount);
         }
 
         /// <summary>
         /// Creates a subdivided mesh and returns in
         /// </summary>
         /// <returns></returns>
-        private Mesh CreateSubdividedMesh(int sizeX, int sizeY, int subdivisions)
+        private Mesh CreateSubdividedMesh(float sizeX, float sizeY, int subdivisions)
         {
             Mesh mesh = new Mesh();
 
-            mesh.name = $"Subdivided Mesh ({subdivisionCount})";
+            mesh.name = $"Subdivided Mesh ({subdivisions})";
 
-            int vertsPerSide = subdivisionCount + 1;
+            int vertsPerSide = subdivisions + 1;
 
             //Initialize an array big enough to hold all vertices data
             Vector3[] verts = new Vector3[vertsPerSide * vertsPerSide];

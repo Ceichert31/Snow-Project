@@ -112,9 +112,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _MaxTessellationDist: 30
+    - _MaxTessellationDist: 120
     - _Metallic: 0
-    - _NoiseScale: 10000
+    - _NoiseScale: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

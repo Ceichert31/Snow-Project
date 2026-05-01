@@ -634,6 +634,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (XR Rig) Pos based
       objectReference: {fileID: 0}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionDenied.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1448758171}
+    - target: {fileID: 1874551859618807957, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: OnPermissionGranted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1448758171}
     - target: {fileID: 2416635419470387004, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -763,16 +771,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
-      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_PlanePrefab
+      value: 
+      objectReference: {fileID: 7269310112191178721, guid: a65b710e3d21d9d488ef05c0cdddc4fd, type: 3}
     - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
-      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1448758171}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlanesModified
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ARExtensions.SubdivideARPlanes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777767900184464630, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: <trackablesChanged>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176134182765273956, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8936158114515579567, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
       propertyPath: m_Background
@@ -1262,6 +1294,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405391121}
   m_CullTransparentMesh: 1
+--- !u!114 &1448758171 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7176134182765273956, guid: cc2d000c402c46c4fb4aafdc0db386c8, type: 3}
+  m_PrefabInstance: {fileID: 949638268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864a02e08769a54da1d85ecba19d8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1483839758
 GameObject:
   m_ObjectHideFlags: 0
