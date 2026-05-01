@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3398769087345111807}
   - component: {fileID: 6217871993908293094}
   - component: {fileID: 450379129018516499}
+  - component: {fileID: 1379176156629393953}
   m_Layer: 8
   m_Name: Particle
   m_TagString: Untagged
@@ -60,7 +61,10 @@ VisualEffect:
     m_Uint:
       m_Array: []
     m_Int:
-      m_Array: []
+      m_Array:
+      - m_Value: 14
+        m_Name: SnowSpawnRate
+        m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
@@ -114,3 +118,17 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1379176156629393953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326495005797238024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c3344e3c0b4a843953ec11ec04ee04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowVFX: {fileID: 6217871993908293094}
+  initialCapacity: 16
